@@ -59,7 +59,7 @@ export default function Rating(props) {
           }
         ></i>
       </span>
-      <span class="numReviews"> {numReviews + " reviews"}</span>
+      <span className="numReviews"> {numReviews + " reviews"}</span>
     </div>
   );
 }
