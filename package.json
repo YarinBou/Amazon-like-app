@@ -22,6 +22,8 @@
     },
     "homepage": "https://github.com/YarinBou/Amazon-like-app#readme",
     "devDependencies": {
+        "eslint": "^7.31.0",
+        "eslint-plugin-react": "^7.24.0",
         "nodemon": "^2.0.12"
     }
 }
