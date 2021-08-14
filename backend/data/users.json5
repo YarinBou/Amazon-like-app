@@ -1,0 +1,18 @@
+[
+    {
+        username: "gal",
+        fullName: "Gal Berger",
+        email: "galberger7@gmail.com",
+        password: "$2a$10$Xpf2uIoL//sD48svtCTAdeeB6acl38XeHsp09SQNt4fvR8zOSq73m",
+        encryptionSalt: "$2a$10$Xpf2uIoL//sD48svtCTAde",
+        isAdmin: true,
+    },
+    {
+        username: "yarin",
+        fullName: "Yarin Bozaglo",
+        email: "yarinbozaglo@gmail.com",
+        password: "$2a$10$Xpf2uIoL//sD48svtCTAdeeB6acl38XeHsp09SQNt4fvR8zOSq73m",
+        encryptionSalt: "$2a$10$Xpf2uIoL//sD48svtCTAde",
+        isAdmin: false,
+    }
+]
