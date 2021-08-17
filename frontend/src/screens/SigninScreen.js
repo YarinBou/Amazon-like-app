@@ -1,19 +1,26 @@
 import React, { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import Axios from "axios";
+import { useHistory } from 'react-router-dom';
 
 export default function SigninScreen() {
-  const [username, setUsername] = useState('username');
-  const [password, setPassword] = useState('password');
-  const [rememberMe, setRememberMe] = useState('rememberMe');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [rememberMe, setRememberMe] = useState('');
+  const history = useHistory();
+  const [errorMessage, setErrorMessage] = useState('');
+
   const submitHandler = async (e) => {
     e.preventDefault();
     try{
       const result = await Axios.post("/api/login",
                                       {'username': username, 'password': password, 'rememberMe': rememberMe});
+
+      history.push("/");  
     }
     catch (e){
-      console.log(e);
+      console.log(e.response.data.validationError);
+      setErrorMessage(e.response.data.validationError);
     }
   };
 
@@ -23,6 +30,7 @@ export default function SigninScreen() {
         <div>
   <h1>Sign In</h1>
         </div>
+  <div>{errorMessage}</div>
         <div>
           <label htmlFor="username">Username</label>
           <input
