@@ -1,6 +1,6 @@
-import express from 'express';
-import fs from 'fs';
-import JSON5 from 'json5';
+import express from "express";
+import fs from "fs";
+import JSON5 from "json5";
 // import cookieParser from 'cookie-parser';
 
 const app = express();
@@ -23,13 +23,12 @@ const app = express();
 
 // function is_authenticated(req){
 //   const cookie = req.cookies.loginCookie;
-//   if (cookie === undefined) 
+//   if (cookie === undefined)
 //     return false;
 //   const username = cookie['username'];
 //   const password = cookie['password'];
 //   return validate_user(username, password);
 // }
-
 
 // app.post('/login', (req, res) => {
 //   const cookieData = {'username': username, 'password': password};
@@ -43,27 +42,27 @@ const app = express();
 //   return true;
 // });
 
-app.get('/api/products/:id', (req, res) => {
-  // if (!is_authenticated(req)){
-  //   res.redirect('/login');
-  //   return;
-  // }
-  const data = JSON5.parse(fs.readFileSync('backend/data/products.json5'));
-  const product = data.find((x) => x._id === req.params.id);
-  if (product) {
-    res.send(product);
-  } else {
-    res.status(404).send({ message: 'Product Not Found' });
-  }
+app.get("/api/products/:id", (req, res) => {
+    // if (!is_authenticated(req)){
+    //   res.redirect('/login');
+    //   return;
+    // }
+    const data = JSON5.parse(fs.readFileSync("backend/data/products.json5"));
+    const product = data.find((x) => x._id === req.params.id);
+    if (product) {
+        res.send(product);
+    } else {
+        res.status(404).send({ message: "Product Not Found" });
+    }
 });
 
-app.get('/api/products', (req, res) => {
-  // if (!is_authenticated(req)){
-  //   res.redirect('/login');
-  //   return;
-  // }
-  const data = JSON5.parse(fs.readFileSync('backend/data/products.json5'));
-  res.send(data);
+app.get("/api/products", (req, res) => {
+    // if (!is_authenticated(req)){
+    //   res.redirect('/login');
+    //   return;
+    // }
+    const data = JSON5.parse(fs.readFileSync("backend/data/products.json5"));
+    res.send(data);
 });
 
 // app.post('/api/products', (req, res) => {
@@ -83,11 +82,11 @@ app.get('/api/products', (req, res) => {
 //   }
 // });
 
-app.get('/', (req, res) => {
-  res.send('Server is ready');
+app.get("/", (req, res) => {
+    res.send("Server is ready");
 });
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
-  console.log(`Serve at http://localhost:${port}`);
+    console.log(`Serve at http://localhost:${port}`);
 });
