@@ -1,30 +1,95 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { addToCart, removeFromCart } from "../actions/cartActions";
 import MessageBox from "../components/MessageBox";
+import Axios from "axios";
+import { listProducts } from '../actions/productActions';
+import { useHistory } from 'react-router-dom';
 
 export default function CartScreen(props) {
-  const productId = props.match.params.id;
-  const qty = props.location.search
-    ? Number(props.location.search.split("=")[1])
-    : 1;
-  const cart = useSelector((state) => state.cart);
-  const { cartItems } = cart;
   const dispatch = useDispatch();
-  useEffect(() => {
-    if (productId) {
-      dispatch(addToCart(productId, qty));
-    }
-  }, [dispatch, productId, qty]);
+  const productList = useSelector((state) => state.productList);
+  const { products } = productList;
+  const history = useHistory();
 
-  const removeFromCartHandler = (id) => {
-    dispatch(removeFromCart(id));
+  useEffect(() => {
+    dispatch(listProducts());
+  }, [dispatch]);
+
+  const [cartItems, setCartItems] = useState([]);
+  const refreshUserCart = async () => {
+    try{
+      const result = await Axios.get("/api/getUserCart");
+      const { userCartItems } = result.data;
+
+      setCartItems(Object.entries(userCartItems).map(([productId, qty]) => {
+        let product = {};
+        for (const iter of products) {
+          if (iter._id === productId) {
+            product = iter;
+            break;
+          }
+        }
+        return {
+          'product': productId,
+          'image': product.image,
+          'name': product.name,
+          'qty': qty,
+          'countInStock': product.countInStock,
+          'price': product.price
+        };
+      }));
+    }
+    catch (e){
+      console.log(e.response.data.validationError);
+      setCartItems([]);
+    }
+  };
+
+  const addToCartHandler = async (productId, qty) => {
+    if (productId) {
+      try{
+        await Axios.post("/api/addItemToCart", { 'productId': productId, 'qty': qty });
+      }
+      catch (e){
+        console.log(e.response.data.validationError);
+        setCartItems(null);
+      }
+    }
+    await refreshUserCart();
+  };
+
+  const removeFromCartHandler = async (productId) => {
+    if (productId) {
+      try{
+          await Axios.post("/api/removeItemFromCart", { 'productId': productId });
+      }
+      catch (e){
+        console.log(e.response.data.validationError);
+        setCartItems(null);
+      }
+    }
+    await refreshUserCart();
   };
 
   const checkoutHandler = () => {
-    props.history.push("/signin?redirect=shipping");
+    props.history.push("/login?redirect=shipping");
   };
+
+  useEffect(async () => {
+    if ((products || []).length > 0) {
+      const productId = props.match.params.id;
+      const qty = props.location.search
+        ? Number(props.location.search.split("=")[1])
+        : 1;
+      if (productId && qty) {
+        history.replace("/cart");
+        await addToCartHandler(productId, qty);
+      } else {
+        await refreshUserCart();
+      }
+    }
+  }, [products]);
 
   return (
     <div className="row top">
@@ -53,9 +118,7 @@ export default function CartScreen(props) {
                     <select
                       value={item.qty}
                       onChange={(e) =>
-                        dispatch(
-                          addToCart(item.product, Number(e.target.value))
-                        )
+                        addToCartHandler(item.product, Number(e.target.value))
                       }
                     >
                       {[...Array(item.countInStock).keys()].map((x) => (

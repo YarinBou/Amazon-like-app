@@ -1,15 +1,29 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Link, Route } from 'react-router-dom';
 import CartScreen from './screens/CartScreen';
 import HomeScreen from './screens/HomeScreen';
 import ProductScreen from './screens/ProductScreen';
-import SigninScreen from './screens/SigninScreen';
-
+import LoginScreen from './screens/LoginScreen';
+import LogoutScreen from './screens/LogoutScreen';
+import RegisterScreen from './screens/RegisterScreen';
+import Axios from "axios";
 
 function App() {
-  const cart = useSelector((state) => state.cart);
-  const { cartItems } = cart;
+  const [username, setUserName] = useState(undefined);
+  const [cartSize, setCartSize] = useState(undefined);
+
+  useEffect(async () => {
+    try{
+      const result = await Axios.get("/api/getUserDetails");
+      const { username, cartSize } = result.data;
+      setUserName(username);
+      setCartSize(cartSize);
+    }
+    catch (e){
+      console.log(e.response.data.validationError);
+      setUserName(null);
+    }
+  }, []);
 
   return (
     <BrowserRouter>
@@ -27,19 +41,30 @@ function App() {
             </Link>
             <Link to="/cart">
               <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-              {cartItems.length > 0 && (
-                <span className="badge">{cartItems.length}</span>
+              {!!cartSize && (
+                <span className="badge">{cartSize}</span>
               )}
             </Link>
-            <Link to="/signin">
+            <Link to={username ? "/logout" : "/login"}>{
+              username === undefined
+              ?
+              '...'
+              :
+              username === null
+              ?
               <i class="fa fa-sign-in" aria-hidden="true"></i>
-            </Link>
+              :
+              `Logout (${username})`
+            }</Link>
+            {username === null && <Link to="/register">Register</Link>}
           </div>
         </header>
         <main>
         <Route path="/cart/:id?" component={CartScreen}></Route>
         <Route path="/product/:id" component={ProductScreen}></Route>
-        <Route path="/signin" component={SigninScreen}></Route>
+        <Route path="/login" component={LoginScreen}></Route>
+        <Route path="/logout" component={LogoutScreen}></Route>
+        <Route path="/register" component={RegisterScreen}></Route>
         <Route path="/" component={HomeScreen} exact></Route>
         </main>
         <footer className="row center">All right reserved</footer>
