@@ -1,7 +1,7 @@
 [
     {
         "_id": "1",
-        "name": "computer",
+        "name": "computer1",
         "category": "computer",
         "image": "/images/p3.jpg",
         "price": 120,
@@ -13,7 +13,7 @@
     },
     {
         "_id": "2",
-        "name": "Camera",
+        "name": "Camera1",
         "category": "Camera",
         "image": "/images/p5.jpg",
         "price": 100,
@@ -25,7 +25,7 @@
     },
     {
         "_id": "3",
-        "name": "headphones",
+        "name": "headphones1",
         "category": "headphones",
         "image": "/images/p6.jpg",
         "price": 220,
@@ -37,7 +37,7 @@
     },
     {
         "_id": "4",
-        "name": "headphones",
+        "name": "headphones2",
         "category": "headphones",
         "image": "/images/p6.jpg",
         "price": 78,
@@ -49,7 +49,7 @@
     },
     {
         "_id": "5",
-        "name": "Camera",
+        "name": "Camera2",
         "category": "Camera",
         "image": "/images/p5.jpg",
         "price": 65,
@@ -61,7 +61,7 @@
     },
     {
         "_id": "6",
-        "name": "computer",
+        "name": "computer2",
         "category": "computer",
         "image": "/images/p3.jpg",
         "price": 139,
@@ -73,7 +73,7 @@
     },
     {
         "_id": "7",
-        "name": "computer",
+        "name": "computer3",
         "category": "computer",
         "image": "/images/p3.jpg",
         "price": 120,
@@ -85,7 +85,7 @@
     },
     {
         "_id": "8",
-        "name": "Camera",
+        "name": "Camera3",
         "category": "Camera",
         "image": "/images/p5.jpg",
         "price": 100,
@@ -97,7 +97,7 @@
     },
     {
         "_id": "9",
-        "name": "headphones",
+        "name": "headphones3",
         "category": "headphones",
         "image": "/images/p6.jpg",
         "price": 220,
@@ -109,7 +109,7 @@
     },
     {
         "_id": "10",
-        "name": "headphones",
+        "name": "headphones4",
         "category": "headphones",
         "image": "/images/p6.jpg",
         "price": 78,
@@ -121,7 +121,7 @@
     },
     {
         "_id": "11",
-        "name": "Camera",
+        "name": "Camera4",
         "category": "Camera",
         "image": "/images/p5.jpg",
         "price": 65,
@@ -133,7 +133,7 @@
     },
     {
         "_id": "12",
-        "name": "computer",
+        "name": "computer4",
         "category": "computer",
         "image": "/images/p3.jpg",
         "price": 139,

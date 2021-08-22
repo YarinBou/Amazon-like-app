@@ -1,22 +1,20 @@
 import React, { useState } from 'react';
-import { Link, Redirect } from 'react-router-dom';
 import Axios from "axios";
-import { useHistory } from 'react-router-dom';
 
-export default function SigninScreen() {
+export default function RegisterScreen() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [rememberMe, setRememberMe] = useState('');
-  const history = useHistory();
+  const [email, setEmail] = useState('');
+  const [fullName, setFullName] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [rememberMe, setRememberMe] = useState('');
 
   const submitHandler = async (e) => {
     e.preventDefault();
     try{
-      const result = await Axios.post("/api/login",
-                                      {'username': username, 'password': password, 'rememberMe': rememberMe});
-
-      history.push("/");  
+      const result = await Axios.post("/api/register",
+                                      {'username': username, 'password': password, 'email': email, 'fullName': fullName, 'rememberMe': rememberMe});
+      document.location = "/";
     }
     catch (e){
       console.log(e.response.data.validationError);
@@ -28,9 +26,29 @@ export default function SigninScreen() {
     <div>
       <form className="form" onSubmit={submitHandler}>
         <div>
-  <h1>Sign In</h1>
+  <h1>Register</h1>
         </div>
   <div>{errorMessage}</div>
+        <div>
+          <label htmlFor="fullName">Full Name</label>
+          <input
+            type="text"
+            id="fullName"
+            placeholder="Enter Full Name"
+            required
+            onChange={(e) => setFullName(e.target.value)}
+          ></input>
+        </div>
+        <div>
+          <label htmlFor="email">Email</label>
+          <input
+            type="text"
+            id="email"
+            placeholder="Enter Email"
+            required
+            onChange={(e) => setEmail(e.target.value)}
+          ></input>
+        </div>
         <div>
           <label htmlFor="username">Username</label>
           <input
@@ -52,16 +70,11 @@ export default function SigninScreen() {
           ></input>
         </div>
         <div>
-          <label />
           <button className="primary" type="submit">
-            Sign In
+            Register
           </button>
         </div>
         <div>
-          <label />
-          <div>
-            New customer? <Link to="/register">Create your account</Link>
-          </div>
           <div>
             <input type="checkbox" id="remember_me" onChange={(e) => setRememberMe(e.target.value)}></input> <label htmlFor="remember_me">Remember me</label>
           </div>
