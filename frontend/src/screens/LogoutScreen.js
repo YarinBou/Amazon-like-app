@@ -1,24 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 import Axios from "axios";
 
 export default function LogoutScreen() {
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(async () => {
-    try {
+    try{
       const result = await Axios.get("/api/logout");
       document.location = "/";
-    } catch (e) {
+    }
+    catch (e){
       setErrorMessage(e.toString());
     }
   }, []);
 
   return (
     <div>
-      <div>
-        <h1>Logging out...</h1>
-      </div>
-      <div>{errorMessage}</div>
+        <div>
+  <h1>Logging out...</h1>
+        </div>
+  <div>{errorMessage}</div>
     </div>
   );
 }

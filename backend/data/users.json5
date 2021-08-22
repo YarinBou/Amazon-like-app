@@ -1,18 +1,42 @@
 [
-    {
-        username: "gal",
-        fullName: "Gal Berger",
-        email: "galberger7@gmail.com",
-        password: "$2a$10$Xpf2uIoL//sD48svtCTAdeeB6acl38XeHsp09SQNt4fvR8zOSq73m",
-        encryptionSalt: "$2a$10$Xpf2uIoL//sD48svtCTAde",
-        isAdmin: true,
-    },
-    {
-        username: "yarin",
-        fullName: "Yarin Bozaglo",
-        email: "yarinbozaglo@gmail.com",
-        password: "$2a$10$Xpf2uIoL//sD48svtCTAdeeB6acl38XeHsp09SQNt4fvR8zOSq73m",
-        encryptionSalt: "$2a$10$Xpf2uIoL//sD48svtCTAde",
-        isAdmin: false,
-    }
+  {
+    username: 'gal',
+    fullName: 'Gal Berger',
+    email: 'galberger7@gmail.com',
+    password: '$2a$10$Xpf2uIoL//sD48svtCTAdeeB6acl38XeHsp09SQNt4fvR8zOSq73m',
+    encryptionSalt: '$2a$10$Xpf2uIoL//sD48svtCTAde',
+    isAdmin: true,
+  },
+  {
+    username: 'yarin',
+    fullName: 'Yarin Bozaglo',
+    email: 'yarinbozaglo@gmail.com',
+    password: '$2a$10$Xpf2uIoL//sD48svtCTAdeeB6acl38XeHsp09SQNt4fvR8zOSq73m',
+    encryptionSalt: '$2a$10$Xpf2uIoL//sD48svtCTAde',
+    isAdmin: false,
+  },
+  {
+    username: 'michael',
+    fullName: 'MM',
+    email: 'a@b',
+    password: '$2a$10$B6obtprBoH1QHqOMzNGSiOOdSZxLGG7vC4Nzyd17MICudE7yieyXq',
+    encryptionSalt: '$2a$10$B6obtprBoH1QHqOMzNGSiO',
+    isAdmin: true,
+  },
+  {
+    username: 'gal21',
+    fullName: 'ga1',
+    email: 'galberge2r7@gmail.com',
+    password: '$2a$10$7YbTe6gtH3r3d3/jlh/2I.Npibt9lPdImNmRf6H6tUYvwsJ8EhlBu',
+    encryptionSalt: '$2a$10$7YbTe6gtH3r3d3/jlh/2I.',
+    isAdmin: false,
+  },
+  {
+    username: 'jacob',
+    fullName: 'Jacob Bouzaglo',
+    email: 'yarinbouzaglo@gmail.com',
+    password: '$2a$10$DXpD6NsJsMU5Rn3Tt1n3W.xd32A2w0Hjqbvky31iKNcIPoirVdXBe',
+    encryptionSalt: '$2a$10$DXpD6NsJsMU5Rn3Tt1n3W.',
+    isAdmin: false,
+  },
 ]

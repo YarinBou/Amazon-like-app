@@ -217,6 +217,10 @@ img.large {
     margin-bottom: 0.5rem;
 }
 
+.userName {
+    font-family: Michroma;
+}
+
 .price,
 .numReviews {
     font-family: Michroma;
@@ -317,7 +321,6 @@ form {
     -webkit-appearance: none;
     border: none;
     outline: none;
-    padding: 5px;
     width: 400px;
     line-height: 30px;
 }
@@ -329,7 +332,9 @@ form {
     border-radius: 30px;
     display: flex;
     align-items: center;
-    padding: 20px;
+    border-color: #01a0da;
+    border-style: solid;
+    margin-top: 15px;
 }
 
 .box>i {
@@ -411,12 +416,15 @@ form {
     display: block;
 }
 
+
 /* Dropdown */
+
 .dropdown {
     display: inline-block;
     position: relative;
-  }
-  .dropdown-content {
+}
+
+.dropdown-content {
     position: absolute;
     display: none;
     right: 0;
@@ -427,7 +435,8 @@ form {
     margin: 0;
     margin-top: 0.4rem;
     border-radius: 0.5rem;
-  }
-  .dropdown:hover .dropdown-content {
+}
+
+.dropdown:hover .dropdown-content {
     display: block;
-  }
+}

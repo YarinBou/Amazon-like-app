@@ -58,7 +58,7 @@ export default function SigninScreen() {
             New customer? <Link to="/register">Create your account</Link>
           </div>
           <div>
-            <input type="checkbox" id="remember_me" onChange={(e) => setRememberMe(e.target.value)}></input> <label htmlFor="remember_me">Remember me</label>
+            <label htmlFor="remember_me">Remember me <input type="checkbox" id="remember_me" onChange={(e) => setRememberMe(e.target.value)}></input></label>
           </div>
         </div>
       </form>
