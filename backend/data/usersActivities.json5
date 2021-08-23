@@ -1,0 +1,88 @@
+[
+  {
+    username: 'gal',
+    DateAndTime: '2021-08-23T17:41:24.355Z',
+    activityType: 'Login',
+    activityState: 'Success',
+  },
+  {
+    username: 'gal',
+    DateAndTime: '2021-08-23T18:27:05.826Z',
+    activityType: 'Login',
+    activityState: 'Success',
+  },
+  {
+    username: 'gal',
+    DateAndTime: '2021-08-23T18:30:48.710Z',
+    activityType: 'Login',
+    activityState: 'Success',
+  },
+  {
+    DateAndTime: '2021-08-23T18:30:51.928Z',
+    activityType: 'Logout',
+    activityState: 'Success',
+  },
+  {
+    username: 'gal',
+    DateAndTime: '2021-08-23T18:41:30.448Z',
+    activityType: 'Login',
+    activityState: 'Success',
+  },
+  {
+    DateAndTime: '2021-08-23T18:41:32.925Z',
+    activityType: 'Logout',
+    activityState: 'Success',
+  },
+  {
+    username: 'gal',
+    DateAndTime: '2021-08-23T18:44:08.112Z',
+    activityType: 'Login',
+    activityState: 'Success',
+  },
+  {
+    DateAndTime: '2021-08-23T18:44:15.175Z',
+    activityType: 'Logout',
+    activityState: 'Success',
+  },
+  {
+    username: 'gal',
+    DateAndTime: '2021-08-23T18:44:55.312Z',
+    activityType: 'Login',
+    activityState: 'Success',
+  },
+  {
+    DateAndTime: '2021-08-23T18:45:00.420Z',
+    activityType: 'Logout',
+    activityState: 'Success',
+  },
+  {
+    username: 'gal',
+    DateAndTime: '2021-08-23T18:46:07.211Z',
+    activityType: 'Login',
+    activityState: 'Success',
+  },
+  {
+    username: 'gal',
+    DateAndTime: '2021-08-23T18:46:11.283Z',
+    activityType: 'Logout',
+    activityState: 'Success',
+  },
+  {
+    username: 'gal',
+    DateAndTime: '2021-08-23T19:07:22.840Z',
+    activityType: 'Login',
+    activityState: 'Success',
+  },
+  {
+    username: 'gal',
+    DateAndTime: '2021-08-23T19:07:38.530Z',
+    activityType: 'Add To Cart',
+    activityState: 'Success',
+  },
+  {
+    username: 'gal',
+    DateAndTime: '2021-08-23T19:09:31.871Z',
+    activityType: 'Add To Cart: Prodect ID: 4',
+    activityState: 'Success',
+  },
+]
