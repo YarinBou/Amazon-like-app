@@ -6,6 +6,7 @@ import ProductScreen from './screens/ProductScreen';
 import LoginScreen from './screens/LoginScreen';
 import LogoutScreen from './screens/LogoutScreen';
 import RegisterScreen from './screens/RegisterScreen';
+import AdminScreen from './screens/AdminScreen'
 import Axios from "axios";
 
 function App() {
@@ -65,6 +66,7 @@ function App() {
         <Route path="/login" component={LoginScreen}></Route>
         <Route path="/logout" component={LogoutScreen}></Route>
         <Route path="/register" component={RegisterScreen}></Route>
+        <Route path="/admin" component={AdminScreen}></Route>
         <Route path="/" component={HomeScreen} exact></Route>
         </main>
         <footer className="row center">All right reserved</footer>

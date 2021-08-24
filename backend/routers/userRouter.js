@@ -4,7 +4,8 @@ import bcrypt from 'bcryptjs';
 import cookieParser from 'cookie-parser';
 import fs from 'fs';
 import JSON5 from 'json5';
-
+import {persist} from '../persist.js'
+// TODO: remove from here
 const USER_DATA_FILE_PATH = 'backend/data/users.json5'
 const CART_DATA_FILE_PATH = 'backend/data/cart.json5'
 const USER_DATA_ACTIVITY = 'backend/data/usersActivities.json5'
@@ -70,6 +71,8 @@ function validateUnecryptedPassword(username, unencryptedPassword){
 //     }
 //     return validateEncryptedPassword(user, cookie['password']);
 // }
+
+//TODO: remove later
 function createActivityLog(activityType, DateAndTime, username, activityState){
     return {
         username: username,
@@ -78,7 +81,7 @@ function createActivityLog(activityType, DateAndTime, username, activityState){
         activityState: activityState,
     };
 }
-userRouter.post('/api/login', (req, res) => {
+userRouter.post('/api/login', async (req, res) => {
     const username = req.body.username;
     const usersActivities = JSON5.parse(fs.readFileSync(USER_DATA_ACTIVITY));
     const validationResult = validateUnecryptedPassword(username, req.body.password);
@@ -88,9 +91,10 @@ userRouter.post('/api/login', (req, res) => {
         res.status(401).send({
             validationError: validationResult.validationError
         });
-        
-        usersActivities.push(createActivityLog('Login', new Date(), username, 'Failure'));
-        fs.writeFileSync(USER_DATA_ACTIVITY, JSON5.stringify(usersActivities, null, 2));
+        await persist.insertToUsersActivities('Login', username, 'Faliure')
+        // TODO: remove
+        // usersActivities.push(createActivityLog('Login', new Date(), username, 'Failure'));
+        // fs.writeFileSync(USER_DATA_ACTIVITY, JSON5.stringify(usersActivities, null, 2));
         return;
     }
     const maxAgeMinutes = req.body.rememberMe ? 60*24*30 : 30;
@@ -98,8 +102,10 @@ userRouter.post('/api/login', (req, res) => {
     const cookieData = {'username': username, 'password': validationResult.encryptedPassword};
     res.cookie('loginCookie', cookieData, { maxAge: maxAge, httpOnly: true });
 
-    usersActivities.push(createActivityLog('Login', new Date(), username, 'Success'));
-    fs.writeFileSync(USER_DATA_ACTIVITY, JSON5.stringify(usersActivities, null, 2));
+    await persist.insertToUsersActivities('Login', username, 'Success')
+    // TODO: remove
+    // usersActivities.push(createActivityLog('Login', new Date(), username, 'Success'));
+    // fs.writeFileSync(USER_DATA_ACTIVITY, JSON5.stringify(usersActivities, null, 2));
     res.status(200).send();
 });
 
@@ -244,6 +250,11 @@ userRouter.post('/api/removeItemFromCart', (req, res) => {
     delete allUsersCart[loginCookie.username][productId];
     fs.writeFileSync(CART_DATA_FILE_PATH, JSON5.stringify(allUsersCart, null, 2));
     res.status(200).send();
+});
+
+userRouter.get('/api/userActivity', (req, res) => {
+    // TODO: make sure the user is an admin
+    res.send(JSON5.parse(fs.readFileSync(USER_DATA_ACTIVITY)));
 });
 
 export default userRouter;

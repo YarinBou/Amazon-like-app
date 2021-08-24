@@ -31,4 +31,12 @@
     encryptionSalt: '$2a$10$7YbTe6gtH3r3d3/jlh/2I.',
     isAdmin: false,
   },
+  {
+    username: 'gilthans',
+    fullName: 'Daniel Rembiszewski',
+    email: 'gilthans@gmail.com',
+    password: '$2a$10$Q03KeR3kk.xOdT6aGdIwg./LzEu897A0anKDLX0BzEqJDPRAAXyB.',
+    encryptionSalt: '$2a$10$Q03KeR3kk.xOdT6aGdIwg.',
+    isAdmin: false,
+  },
 ]

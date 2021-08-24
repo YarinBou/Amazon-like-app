@@ -18,19 +18,9 @@
     activityState: 'Success',
   },
   {
-    DateAndTime: '2021-08-23T18:30:51.928Z',
-    activityType: 'Logout',
-    activityState: 'Success',
-  },
-  {
     username: 'gal',
     DateAndTime: '2021-08-23T18:41:30.448Z',
     activityType: 'Login',
-    activityState: 'Success',
-  },
-  {
-    DateAndTime: '2021-08-23T18:41:32.925Z',
-    activityType: 'Logout',
     activityState: 'Success',
   },
   {
@@ -40,19 +30,9 @@
     activityState: 'Success',
   },
   {
-    DateAndTime: '2021-08-23T18:44:15.175Z',
-    activityType: 'Logout',
-    activityState: 'Success',
-  },
-  {
     username: 'gal',
     DateAndTime: '2021-08-23T18:44:55.312Z',
     activityType: 'Login',
-    activityState: 'Success',
-  },
-  {
-    DateAndTime: '2021-08-23T18:45:00.420Z',
-    activityType: 'Logout',
     activityState: 'Success',
   },
   {
@@ -83,6 +63,24 @@
     username: 'gal',
     DateAndTime: '2021-08-23T19:09:31.871Z',
     activityType: 'Add To Cart: Prodect ID: 4',
+    activityState: 'Success',
+  },
+  {
+    username: 'gal',
+    DateAndTime: '2021-08-23T20:42:45.432Z',
+    activityType: 'Login',
+    activityState: 'Success',
+  },
+  {
+    username: 'gal',
+    DateAndTime: '2021-08-23T20:43:10.485Z',
+    activityType: 'Logout',
+    activityState: 'Success',
+  },
+  {
+    username: 'gal',
+    DateAndTime: '2021-08-23T20:43:14.388Z',
+    activityType: 'Login',
     activityState: 'Success',
   },
 ]
