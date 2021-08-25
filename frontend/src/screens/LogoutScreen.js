@@ -6,7 +6,7 @@ export default function LogoutScreen() {
 
   useEffect(async () => {
     try{
-      const result = await Axios.get("/api/logout");
+      await Axios.get("/api/logout");
       document.location = "/";
     }
     catch (e){

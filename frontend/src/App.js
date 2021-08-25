@@ -7,6 +7,10 @@ import LoginScreen from "./screens/LoginScreen";
 import LogoutScreen from "./screens/LogoutScreen";
 import RegisterScreen from "./screens/RegisterScreen";
 import Axios from "axios";
+import ShippingAddressScreen from "./screens/ShippingAddressScreen";
+import PaymentMethodScreen from "./screens/PaymentMethodScreen";
+import PlaceOrderScreen from "./screens/PlaceOrderScreen";
+import OrderScreen from "./screens/OrderScreen";
 
 function App() {
   const [username, setUserName] = useState(undefined);
@@ -36,20 +40,22 @@ function App() {
           </div>
           <div>
             <Link to="/like">
-              <i class="fa fa-heart" aria-hidden="true"></i>
+              <i className="fa fa-heart" aria-hidden="true"></i>
             </Link>
             <Link to="/cart">
-              <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+              <i className="fa fa-shopping-cart" aria-hidden="true"></i>
             </Link>
             <Link to={username ? "/logout" : "/login"}>
               {username === undefined ? (
                 "..."
               ) : username === null ? (
-                <i class="fa fa-sign-in" aria-hidden="true">
-                <span class="userName"> login</span></i>
+                <i className="fa fa-sign-in" aria-hidden="true">
+                  <span className="userName"> login</span>
+                </i>
               ) : (
-                <i class="fa fa-sign-out" aria-hidden="true">
-                <span class="userName"> logout</span></i>
+                <i className="fa fa-sign-out" aria-hidden="true">
+                  <span className="userName"> logout</span>
+                </i>
               )}
             </Link>
             {/* {username === null && <Link to="/register">Register</Link>} */}
@@ -61,6 +67,10 @@ function App() {
           <Route path="/login" component={LoginScreen}></Route>
           <Route path="/logout" component={LogoutScreen}></Route>
           <Route path="/register" component={RegisterScreen}></Route>
+          <Route path="/shipping" component={ShippingAddressScreen}></Route>
+          <Route path="/Payment" component={PaymentMethodScreen}></Route>
+          <Route path="/placeorder" component={PlaceOrderScreen}></Route>
+          <Route path="/orderScreen" component={OrderScreen}></Route>
           <Route path="/" component={HomeScreen} exact></Route>
         </main>
         <footer className="row center">All right reserved</footer>

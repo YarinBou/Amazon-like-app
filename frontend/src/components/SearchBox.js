@@ -1,7 +1,7 @@
 import React from "react";
 const SearchBox = ({ placeholder, handleChange }) => {
   return (
-    <form action="" class="search-bar">
+    <form action="" className="search-bar">
       <div className="box">
         <input
           type="search"
