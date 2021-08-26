@@ -10,7 +10,7 @@ function createActivityLog(activityType, DateAndTime, username, activityState){
         activityState: activityState,
     };
 }
-export function persist(activityType, username, activityState){
+export function insertToUsersActivities(activityType, username, activityState){
         return new Promise((resolve, reject) => {
             const usersActivities = JSON5.parse(fs.readFileSync(USER_DATA_ACTIVITY));
 
@@ -20,6 +20,6 @@ export function persist(activityType, username, activityState){
         });
     }
 
-export function rambi(){
+export function exmp(){
 
 }
