@@ -1,14 +1,14 @@
 import express from 'express';
 // import expressAsyncHandler from 'express-async-handler';
-import bcrypt from 'bcryptjs';
-import cookieParser from 'cookie-parser';
-import fs from 'fs';
-import JSON5 from 'json5';
-import {persist} from '../persist.js'
+import bcrypt from "bcryptjs";
+import cookieParser from "cookie-parser";
+import fs from "fs";
+import JSON5 from "json5";
+import {insertToUsersActivities} from "../persist.js";
 // TODO: remove from here
-const USER_DATA_FILE_PATH = 'backend/data/users.json5'
-const CART_DATA_FILE_PATH = 'backend/data/cart.json5'
-const USER_DATA_ACTIVITY = 'backend/data/usersActivities.json5'
+const USER_DATA_FILE_PATH = "backend/data/users.json5";
+const CART_DATA_FILE_PATH = "backend/data/cart.json5";
+const USER_DATA_ACTIVITY = "backend/data/usersActivities.json5";
 
 const userRouter = express.Router();
 userRouter.use(express.json());
@@ -91,7 +91,7 @@ userRouter.post('/api/login', async (req, res) => {
         res.status(401).send({
             validationError: validationResult.validationError
         });
-        await persist.insertToUsersActivities('Login', username, 'Faliure')
+        await insertToUsersActivities('Login', username, 'Faliure')
         // TODO: remove
         // usersActivities.push(createActivityLog('Login', new Date(), username, 'Failure'));
         // fs.writeFileSync(USER_DATA_ACTIVITY, JSON5.stringify(usersActivities, null, 2));
@@ -102,7 +102,7 @@ userRouter.post('/api/login', async (req, res) => {
     const cookieData = {'username': username, 'password': validationResult.encryptedPassword};
     res.cookie('loginCookie', cookieData, { maxAge: maxAge, httpOnly: true });
 
-    await persist.insertToUsersActivities('Login', username, 'Success')
+    await insertToUsersActivities('Login', username, 'Success')
     // TODO: remove
     // usersActivities.push(createActivityLog('Login', new Date(), username, 'Success'));
     // fs.writeFileSync(USER_DATA_ACTIVITY, JSON5.stringify(usersActivities, null, 2));
