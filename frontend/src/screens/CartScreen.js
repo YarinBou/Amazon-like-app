@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import MessageBox from "../components/MessageBox";
 import Axios from "axios";
-import { listProducts } from '../actions/productActions';
-import { useHistory } from 'react-router-dom';
+import { listProducts } from "../actions/productActions";
+import { useHistory } from "react-router-dom";
 
 export default function CartScreen(props) {
   const dispatch = useDispatch();
@@ -18,29 +18,30 @@ export default function CartScreen(props) {
 
   const [cartItems, setCartItems] = useState([]);
   const refreshUserCart = async () => {
-    try{
+    try {
       const result = await Axios.get("/api/getUserCart");
       const { userCartItems } = result.data;
 
-      setCartItems(Object.entries(userCartItems).map(([productId, qty]) => {
-        let product = {};
-        for (const iter of products) {
-          if (iter._id === productId) {
-            product = iter;
-            break;
+      setCartItems(
+        Object.entries(userCartItems).map(([productId, qty]) => {
+          let product = {};
+          for (const iter of products) {
+            if (iter._id === productId) {
+              product = iter;
+              break;
+            }
           }
-        }
-        return {
-          'product': productId,
-          'image': product.image,
-          'name': product.name,
-          'qty': qty,
-          'countInStock': product.countInStock,
-          'price': product.price
-        };
-      }));
-    }
-    catch (e){
+          return {
+            product: productId,
+            image: product.image,
+            name: product.name,
+            qty: qty,
+            countInStock: product.countInStock,
+            price: product.price,
+          };
+        })
+      );
+    } catch (e) {
       console.log(e.response.data.validationError);
       setCartItems([]);
     }
@@ -48,10 +49,12 @@ export default function CartScreen(props) {
 
   const addToCartHandler = async (productId, qty) => {
     if (productId) {
-      try{
-        await Axios.post("/api/addItemToCart", { 'productId': productId, 'qty': qty });
-      }
-      catch (e){
+      try {
+        await Axios.post("/api/addItemToCart", {
+          productId: productId,
+          qty: qty,
+        });
+      } catch (e) {
         console.log(e.response.data.validationError);
         setCartItems(null);
       }
@@ -61,10 +64,9 @@ export default function CartScreen(props) {
 
   const removeFromCartHandler = async (productId) => {
     if (productId) {
-      try{
-          await Axios.post("/api/removeItemFromCart", { 'productId': productId });
-      }
-      catch (e){
+      try {
+        await Axios.post("/api/removeItemFromCart", { productId: productId });
+      } catch (e) {
         console.log(e.response.data.validationError);
         setCartItems(null);
       }
@@ -72,8 +74,12 @@ export default function CartScreen(props) {
     await refreshUserCart();
   };
 
+  // const checkoutHandler = () => {
+  //   props.history.push("/login?redirect=shipping");
+  // };
+
   const checkoutHandler = () => {
-    props.history.push("/login?redirect=shipping");
+    props.history.push("/shipping");
   };
 
   useEffect(async () => {

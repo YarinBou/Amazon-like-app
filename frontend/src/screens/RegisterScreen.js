@@ -1,22 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import Axios from "axios";
 
 export default function RegisterScreen() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [email, setEmail] = useState('');
-  const [fullName, setFullName] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
-  const [rememberMe, setRememberMe] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [fullName, setFullName] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [rememberMe, setRememberMe] = useState("");
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    try{
-      const result = await Axios.post("/api/register",
-                                      {'username': username, 'password': password, 'email': email, 'fullName': fullName, 'rememberMe': rememberMe});
+    try {
+      await Axios.post("/api/register", {
+        username: username,
+        password: password,
+        email: email,
+        fullName: fullName,
+        rememberMe: rememberMe,
+      });
       document.location = "/";
-    }
-    catch (e){
+    } catch (e) {
       console.log(e.response.data.validationError);
       setErrorMessage(e.response.data.validationError);
     }
@@ -26,9 +30,9 @@ export default function RegisterScreen() {
     <div>
       <form className="form" onSubmit={submitHandler}>
         <div>
-  <h1>Register</h1>
+          <h1>Register</h1>
         </div>
-  <div>{errorMessage}</div>
+        <div>{errorMessage}</div>
         <div>
           <label htmlFor="fullName">Full Name</label>
           <input
@@ -76,7 +80,14 @@ export default function RegisterScreen() {
         </div>
         <div>
           <div>
-            <input type="checkbox" id="remember_me" onChange={(e) => setRememberMe(e.target.value)}></input> <label htmlFor="remember_me">Remember me</label>
+            <label htmlFor="remember_me">
+              Remember me{" "}
+              <input
+                type="checkbox"
+                id="remember_me"
+                onChange={(e) => setRememberMe(e.target.value)}
+              ></input>
+            </label>
           </div>
         </div>
       </form>

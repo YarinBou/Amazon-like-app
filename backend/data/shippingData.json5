@@ -1,0 +1,10 @@
+{
+  yarin1: {
+    fullName: 'Yarin Bouzaglo',
+    address: 'israel giladi 18',
+    city: 'Ashdod',
+    postalCode: '7751438',
+    country: 'ישראל',
+    PaymentMethod: 'Stripe',
+  },
+}

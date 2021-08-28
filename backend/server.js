@@ -10,10 +10,6 @@ const app = express();
 
 app.use(userRouter);
 app.get('/api/products/:id', (req, res) => {
-  // if (!is_authenticated(req)){
-  //   res.redirect('/login');
-  //   return;
-  // }
   const data = JSON5.parse(fs.readFileSync('backend/data/products.json5'));
   const product = data.find((x) => x._id === req.params.id);
   if (product) {
