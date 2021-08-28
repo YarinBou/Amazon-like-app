@@ -10,7 +10,6 @@ const USER_DATA_FILE_PATH = "backend/data/users.json5";
 const USER_DATA_ACTIVITY = "backend/data/usersActivities.json5";
 const CART_DATA_FILE_PATH = "backend/data/cart.json5";
 const USER_SHIPPING_DATA_FILE_PATH = "backend/data/shippingData.json5";
-const PRODUCTS_PATH = "backend/data/products.json5"
 
 const userRouter = express.Router();
 userRouter.use(express.json());
@@ -394,26 +393,6 @@ userRouter.get('/api/userActivity', (req, res) => {
     res.send(JSON5.parse(fs.readFileSync(USER_DATA_ACTIVITY)));
 });
 
-userRouter.delete("/product/:productId", (req, res) => {
-  const productId = req.params.productId
-  console.log(productId);
 
-  const allProducts = JSON5.parse(fs.readFileSync(PRODUCTS_PATH));
-  
-  for (const idx in allProducts) {
-    if (allProducts[idx]._id == productId) {
-      console.log("## got here")
-      allProducts.splice(idx, 1);
-      fs.writeFileSync(PRODUCTS_PATH, JSON5.stringify(allProducts, null, 2));
-      res.status(200).send();
-      return;
-    };
-  }
-  res.status(409).send({
-    validationError: "Product doesn't exits.",
-  });
-  return;
-
-});
 
 export default userRouter;

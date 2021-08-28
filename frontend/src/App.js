@@ -11,9 +11,8 @@ import Axios from "axios";
 import ShippingAddressScreen from "./screens/ShippingAddressScreen";
 import PaymentMethodScreen from "./screens/PaymentMethodScreen";
 import PlaceOrderScreen from "./screens/PlaceOrderScreen";
-import DeleteScreen from "./screens/DeleteScreen";
-import DeleteProductScreen from "./screens/DeleteProductScreen";
 import OrderScreen from "./screens/OrderScreen";
+import AddReviewScreen from "./screens/AddReviewScreen";
 
 function App() {
   const [username, setUserName] = useState(undefined);
@@ -70,6 +69,7 @@ function App() {
         <main>
           <Route path="/cart/:id?" component={CartScreen}></Route>
           <Route path="/product/:id" component={ProductScreen}></Route>
+          <Route path="/addReview/:id" component={AddReviewScreen}></Route>
           <Route path="/login" component={LoginScreen}></Route>
           <Route path="/logout" component={LogoutScreen}></Route>
           <Route path="/register" component={RegisterScreen}></Route>
@@ -78,8 +78,6 @@ function App() {
           <Route path="/Payment" component={PaymentMethodScreen}></Route>
           <Route path="/placeorder" component={PlaceOrderScreen}></Route>
           <Route path="/orderScreen" component={OrderScreen}></Route>
-          <Route path="/delete" component={DeleteScreen}></Route>
-          <Route path="/deleteproduct/:id" component={DeleteProductScreen}></Route>
           <Route path="/" component={HomeScreen} exact></Route>
         </main>
         <footer className="row center">All right reserved</footer>

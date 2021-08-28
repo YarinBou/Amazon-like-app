@@ -20,12 +20,8 @@ export default function Product(props) {
     return (
     <div key={product._id} id={product.name} style={{width: '48%', textAlign: 'center', border: '1px solid gray', boxSizing: 'border-box', margin: '1%', padding: '1em'}}>
       <div style={{textAlign: 'center'}}>
-        <Link to={`/deleteproduct/${product._id}`}>
           <img className="medium" src={product.image} alt={product.name} />
-        </Link>
-        <Link to={`/deleteproduct/${product._id}`}>
           <h2 className="productName">{product.name}</h2>
-        </Link>
       </div>
       <div>
         <button onClick={deleteProductHandler}>Delete</button>

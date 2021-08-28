@@ -7,9 +7,22 @@
         "price": 120,
         "brand": "computer",
         "countInStock": 10,
-        "rating": 4.5,
-        "numReviews": 10,
-        "description": "high quality product"
+        "description": "high quality product",
+        "reviews": [
+            {
+                "rating": 5
+            },
+            {
+                "rating": 4
+            },
+            {
+                "rating": 5
+            },
+            {
+                "rating": 4,
+                "text": "Did not like the product"
+            }
+        ],
     },
     {
         "_id": "2",
@@ -19,9 +32,22 @@
         "price": 100,
         "brand": "Camera",
         "countInStock": 15,
-        "rating": 4.0,
-        "numReviews": 10,
-        "description": "high quality product"
+        "description": "high quality product",
+        "reviews": [
+            {
+                "rating": 5
+            },
+            {
+                "rating": 4
+            },
+            {
+                "rating": 5
+            },
+            {
+                "rating": 4,
+                "text": "Did not like the product"
+            }
+        ],
     },
     {
         "_id": "3",
@@ -31,9 +57,23 @@
         "price": 220,
         "brand": "headphones",
         "countInStock": 0,
-        "rating": 4.8,
-        "numReviews": 17,
         "description": "high quality product",
+        "reviews": [
+            {
+                "rating": 5,
+                "text": "Loved it!",
+            },
+            {
+                "rating": 4
+            },
+            {
+                "rating": 5
+            },
+            {
+                "rating": 4,
+                "text": "Did not like the product"
+            }
+        ],
     },
     {
         "_id": "4",
@@ -43,9 +83,22 @@
         "price": 78,
         "brand": "headphones",
         "countInStock": 10,
-        "rating": 4.5,
-        "numReviews": 14,
         "description": "high quality product",
+        "reviews": [
+            {
+                "rating": 5
+            },
+            {
+                "rating": 4
+            },
+            {
+                "rating": 5
+            },
+            {
+                "rating": 4,
+                "text": "Did not like the product"
+            }
+        ],
     },
     {
         "_id": "5",
@@ -55,9 +108,22 @@
         "price": 65,
         "brand": "Camera",
         "countInStock": 10,
-        "rating": 4.5,
-        "numReviews": 10,
         "description": "high quality product",
+        "reviews": [
+            {
+                "rating": 5
+            },
+            {
+                "rating": 4
+            },
+            {
+                "rating": 5
+            },
+            {
+                "rating": 4,
+                "text": "Did not like the product"
+            }
+        ],
     },
     {
         "_id": "6",
@@ -67,9 +133,22 @@
         "price": 139,
         "brand": "computer",
         "countInStock": 2,
-        "rating": 4.5,
-        "numReviews": 15,
         "description": "high quality product",
+        "reviews": [
+            {
+                "rating": 5
+            },
+            {
+                "rating": 4
+            },
+            {
+                "rating": 5
+            },
+            {
+                "rating": 4,
+                "text": "Did not like the product"
+            }
+        ],
     },
     {
         "_id": "7",
@@ -79,9 +158,22 @@
         "price": 120,
         "brand": "computer",
         "countInStock": 3,
-        "rating": 4.5,
-        "numReviews": 10,
         "description": "high quality product",
+        "reviews": [
+            {
+                "rating": 5
+            },
+            {
+                "rating": 4
+            },
+            {
+                "rating": 5
+            },
+            {
+                "rating": 4,
+                "text": "Did not like the product"
+            }
+        ],
     },
     {
         "_id": "8",
@@ -91,9 +183,22 @@
         "price": 100,
         "brand": "Camera",
         "countInStock": 8,
-        "rating": 4.0,
-        "numReviews": 10,
         "description": "high quality product",
+        "reviews": [
+            {
+                "rating": 5
+            },
+            {
+                "rating": 4
+            },
+            {
+                "rating": 5
+            },
+            {
+                "rating": 4,
+                "text": "Did not like the product"
+            }
+        ],
     },
     {
         "_id": "9",
@@ -103,9 +208,22 @@
         "price": 220,
         "brand": "headphones",
         "countInStock": 2,
-        "rating": 4.8,
-        "numReviews": 17,
         "description": "high quality product",
+        "reviews": [
+            {
+                "rating": 5
+            },
+            {
+                "rating": 4
+            },
+            {
+                "rating": 5
+            },
+            {
+                "rating": 4,
+                "text": "Did not like the product"
+            }
+        ],
     },
     {
         "_id": "10",
@@ -115,9 +233,22 @@
         "price": 78,
         "brand": "headphones",
         "countInStock": 10,
-        "rating": 4.5,
-        "numReviews": 14,
         "description": "high quality product",
+        "reviews": [
+            {
+                "rating": 5
+            },
+            {
+                "rating": 4
+            },
+            {
+                "rating": 5
+            },
+            {
+                "rating": 4,
+                "text": "Did not like the product"
+            }
+        ],
     },
     {
         "_id": "11",
@@ -127,9 +258,22 @@
         "price": 65,
         "brand": "Camera",
         "countInStock": 10,
-        "rating": 4.5,
-        "numReviews": 10,
         "description": "high quality product",
+        "reviews": [
+            {
+                "rating": 5
+            },
+            {
+                "rating": 4
+            },
+            {
+                "rating": 5
+            },
+            {
+                "rating": 4,
+                "text": "Did not like the product"
+            }
+        ],
     },
     {
         "_id": "12",
@@ -139,8 +283,21 @@
         "price": 139,
         "brand": "computer",
         "countInStock": 10,
-        "rating": 4.5,
-        "numReviews": 15,
         "description": "high quality product",
+        "reviews": [
+            {
+                "rating": 5
+            },
+            {
+                "rating": 4
+            },
+            {
+                "rating": 5
+            },
+            {
+                "rating": 4,
+                "text": "Did not like the product"
+            }
+        ],
     }
 ]
