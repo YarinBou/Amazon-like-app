@@ -7,7 +7,6 @@ import { Link, Redirect, Route } from "react-router-dom";
 
 export default function AdminScreen() {
   // TODO: get logged in user data. If user is admin - show this. If not - show error message (you do not have privileges)
-  // TODO: Add a top bar with links to activity log, and other things
     return (
       <div>
         <ul className="adminmenu">
