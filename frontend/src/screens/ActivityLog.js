@@ -83,7 +83,6 @@ export default class ActivityLogComponent extends React.Component{
             return (
                 <div>
                     <ActivityLogSearch onFilterChanged={(filterFunc) => this.handleFilterChanged(filterFunc)}></ActivityLogSearch>
-                    <Link to="/delete">Delete Product</Link>
                     <ActivityLogList logs={this.state.logData}></ActivityLogList>
                 </div>
         )

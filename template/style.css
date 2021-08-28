@@ -125,3 +125,10 @@ img.medium {
     color: #f0c040;
     margin: 0.1rem;
 }
+
+/* Admin menu */
+
+.adminmenu{
+    display: "flex";
+    justify-content: "center";
+}

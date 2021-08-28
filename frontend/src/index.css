@@ -440,3 +440,28 @@ form {
 .dropdown:hover .dropdown-content {
     display: block;
 }
+
+
+/* Admin menu */
+
+.adminmenu{
+    display: flex;
+    justify-content: center;
+}
+
+.adminmenu a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px; 
+    height: 70px;
+    background-color: skyblue;
+    border: 1px solid teal;
+    color: black;
+}
+
+.adminmenu a:hover{
+    background-color: #94defb;
+    border: 1px solid salmon;
+    color: #333333;
+}
