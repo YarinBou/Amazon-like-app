@@ -11,6 +11,8 @@ import Axios from "axios";
 import ShippingAddressScreen from "./screens/ShippingAddressScreen";
 import PaymentMethodScreen from "./screens/PaymentMethodScreen";
 import PlaceOrderScreen from "./screens/PlaceOrderScreen";
+import DeleteScreen from "./screens/DeleteScreen";
+import DeleteProductScreen from "./screens/DeleteProductScreen";
 import OrderScreen from "./screens/OrderScreen";
 
 function App() {
@@ -58,7 +60,7 @@ function App() {
                 </i>
               ) : (
                 <i className="fa fa-sign-out" aria-hidden="true">
-                  <span className="userName"> `Logout (${username})`</span>
+                  <span className="userName"> {username}</span>
                 </i>
               )}
             </Link>
@@ -76,6 +78,8 @@ function App() {
           <Route path="/Payment" component={PaymentMethodScreen}></Route>
           <Route path="/placeorder" component={PlaceOrderScreen}></Route>
           <Route path="/orderScreen" component={OrderScreen}></Route>
+          <Route path="/delete" component={DeleteScreen}></Route>
+          <Route path="/deleteproduct/:id" component={DeleteProductScreen}></Route>
           <Route path="/" component={HomeScreen} exact></Route>
         </main>
         <footer className="row center">All right reserved</footer>

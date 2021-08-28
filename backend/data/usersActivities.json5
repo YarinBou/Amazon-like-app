@@ -83,4 +83,16 @@
     activityType: 'Login',
     activityState: 'Success',
   },
+  {
+    username: 'gal',
+    DateAndTime: '2021-08-28T12:21:15.507Z',
+    activityType: 'Add To Cart: Prodect ID: 8',
+    activityState: 'Success',
+  },
+  {
+    username: 'gal',
+    DateAndTime: '2021-08-28T12:21:28.888Z',
+    activityType: 'Add To Cart: Prodect ID: 8',
+    activityState: 'Success',
+  },
 ]
