@@ -1,16 +1,16 @@
 import React from "react";
-const SearchBox = ({ placeholder, handleChange }) => {
+const SearchBox = ({ placeholder, handleChange, style }) => {
   return (
-    <form action="" className="search-bar">
-      <div className="box">
+    <div className="box">
+      <form action="" className="search-bar">
         <input
           type="search"
           className="search"
           placeholder={placeholder}
           onChange={handleChange}
         />
-      </div>
-    </form>
+      </form>
+    </div>
   );
 };
 

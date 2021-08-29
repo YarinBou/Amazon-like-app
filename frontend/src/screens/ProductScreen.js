@@ -1,11 +1,12 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { detailsProduct } from "../actions/productActions";
 import LoadingBox from "../components/LoadingBox";
 import MessageBox from "../components/MessageBox";
 import Rating from "../components/Rating";
+import Review from "../components/Review";
 
 export default function ProductScreen(props) {
   const dispatch = useDispatch();
@@ -60,14 +61,34 @@ export default function ProductScreen(props) {
                 </li>
                 <li>
                   <Rating
-                    rating={product.rating}
-                    numReviews={product.numReviews}
-                  ></Rating>
+                    rating={
+                      product.reviews.length == 0
+                        ? 0
+                        : product.reviews
+                            .map((r) => r.rating)
+                            .reduce((a, b) => a + b, 0) / product.reviews.length
+                    }
+                    numReviews={product.reviews.length}
+                  />
                 </li>
-                <li>Pirce : ${product.price}</li>
                 <li>
-                  Description:
+                  Product Description:
                   <p>{product.description}</p>
+                </li>
+                <li>
+                  Product Reviews:
+                  <ul>
+                    {product.reviews
+                      .filter((r) => r.text)
+                      .map((r) => (
+                        <li>
+                          <Review data={r} />
+                        </li>
+                      ))}
+                  </ul>
+                </li>
+                <li>
+                  <Link to={`/addReview/${product._id}`}>Add Your Review</Link>
                 </li>
               </ul>
             </div>

@@ -6,6 +6,7 @@ import ProductScreen from "./screens/ProductScreen";
 import LoginScreen from "./screens/LoginScreen";
 import LogoutScreen from "./screens/LogoutScreen";
 import RegisterScreen from "./screens/RegisterScreen";
+import AdminScreen from './screens/AdminScreen'
 import Axios from "axios";
 import ShippingAddressScreen from "./screens/ShippingAddressScreen";
 import PaymentMethodScreen from "./screens/PaymentMethodScreen";
@@ -13,6 +14,7 @@ import PlaceOrderScreen from "./screens/PlaceOrderScreen";
 import OrderScreen from "./screens/OrderScreen";
 import WishListScreen from "./screens/WishListScreen";
 import { useSelector } from "react-redux";
+import AddReviewScreen from "./screens/AddReviewScreen";
 
 function App() {
   const [username, setUserName] = useState(undefined);
@@ -48,6 +50,9 @@ function App() {
             </Link>
             <Link to="/cart">
               <i className="fa fa-shopping-cart" aria-hidden="true"></i>
+              {!!cartSize && (
+                <span className="badge">{cartSize}</span>
+              )}
             </Link>
             <Link to={username ? "/logout" : "/login"}>
               {username === undefined ? (
@@ -58,7 +63,7 @@ function App() {
                 </i>
               ) : (
                 <i className="fa fa-sign-out" aria-hidden="true">
-                  <span className="userName"> logout</span>
+                  <span className="userName"> {username}</span>
                 </i>
               )}
             </Link>
@@ -68,9 +73,11 @@ function App() {
         <main>
           <Route path="/cart/:id?" component={CartScreen}></Route>
           <Route path="/product/:id" component={ProductScreen}></Route>
+          <Route path="/addReview/:id" component={AddReviewScreen}></Route>
           <Route path="/login" component={LoginScreen}></Route>
           <Route path="/logout" component={LogoutScreen}></Route>
           <Route path="/register" component={RegisterScreen}></Route>
+          <Route path="/admin" component={AdminScreen}></Route>
           <Route path="/shipping" component={ShippingAddressScreen}></Route>
           <Route path="/Payment" component={PaymentMethodScreen}></Route>
           <Route path="/placeorder" component={PlaceOrderScreen}></Route>

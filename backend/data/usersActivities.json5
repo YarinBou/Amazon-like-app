@@ -1,0 +1,98 @@
+[
+  {
+    username: 'gal',
+    DateAndTime: '2021-08-23T17:41:24.355Z',
+    activityType: 'Login',
+    activityState: 'Success',
+  },
+  {
+    username: 'gal',
+    DateAndTime: '2021-08-23T18:27:05.826Z',
+    activityType: 'Login',
+    activityState: 'Success',
+  },
+  {
+    username: 'gal',
+    DateAndTime: '2021-08-23T18:30:48.710Z',
+    activityType: 'Login',
+    activityState: 'Success',
+  },
+  {
+    username: 'gal',
+    DateAndTime: '2021-08-23T18:41:30.448Z',
+    activityType: 'Login',
+    activityState: 'Success',
+  },
+  {
+    username: 'gal',
+    DateAndTime: '2021-08-23T18:44:08.112Z',
+    activityType: 'Login',
+    activityState: 'Success',
+  },
+  {
+    username: 'gal',
+    DateAndTime: '2021-08-23T18:44:55.312Z',
+    activityType: 'Login',
+    activityState: 'Success',
+  },
+  {
+    username: 'gal',
+    DateAndTime: '2021-08-23T18:46:07.211Z',
+    activityType: 'Login',
+    activityState: 'Success',
+  },
+  {
+    username: 'gal',
+    DateAndTime: '2021-08-23T18:46:11.283Z',
+    activityType: 'Logout',
+    activityState: 'Success',
+  },
+  {
+    username: 'gal',
+    DateAndTime: '2021-08-23T19:07:22.840Z',
+    activityType: 'Login',
+    activityState: 'Success',
+  },
+  {
+    username: 'gal',
+    DateAndTime: '2021-08-23T19:07:38.530Z',
+    activityType: 'Add To Cart',
+    activityState: 'Success',
+  },
+  {
+    username: 'gal',
+    DateAndTime: '2021-08-23T19:09:31.871Z',
+    activityType: 'Add To Cart: Prodect ID: 4',
+    activityState: 'Success',
+  },
+  {
+    username: 'gal',
+    DateAndTime: '2021-08-23T20:42:45.432Z',
+    activityType: 'Login',
+    activityState: 'Success',
+  },
+  {
+    username: 'gal',
+    DateAndTime: '2021-08-23T20:43:10.485Z',
+    activityType: 'Logout',
+    activityState: 'Success',
+  },
+  {
+    username: 'gal',
+    DateAndTime: '2021-08-23T20:43:14.388Z',
+    activityType: 'Login',
+    activityState: 'Success',
+  },
+  {
+    username: 'gal',
+    DateAndTime: '2021-08-28T12:21:15.507Z',
+    activityType: 'Add To Cart: Prodect ID: 8',
+    activityState: 'Success',
+  },
+  {
+    username: 'gal',
+    DateAndTime: '2021-08-28T12:21:28.888Z',
+    activityType: 'Add To Cart: Prodect ID: 8',
+    activityState: 'Success',
+  },
+]

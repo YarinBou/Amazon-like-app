@@ -3,12 +3,14 @@ import fs from 'fs';
 import JSON5 from 'json5';
 import dotenv from 'dotenv';
 import userRouter from './routers/userRouter.js';
+import productRouter from './routers/productRouter.js';
 
 dotenv.config();
 
 const app = express();
 
 app.use(userRouter);
+app.use(productRouter);
 app.get('/api/products/:id', (req, res) => {
   const data = JSON5.parse(fs.readFileSync('backend/data/products.json5'));
   const product = data.find((x) => x._id === req.params.id);

@@ -4,8 +4,10 @@ import bcrypt from "bcryptjs";
 import cookieParser from "cookie-parser";
 import fs from "fs";
 import JSON5 from "json5";
-
+import {insertToUsersActivities} from "../persist.js";
+// TODO: remove from here
 const USER_DATA_FILE_PATH = "backend/data/users.json5";
+const USER_DATA_ACTIVITY = "backend/data/usersActivities.json5";
 const CART_DATA_FILE_PATH = "backend/data/cart.json5";
 const USER_SHIPPING_DATA_FILE_PATH = "backend/data/shippingData.json5";
 
@@ -42,12 +44,12 @@ function createNewUser(username, password, fullName, email) {
 }
 
 function validateEncryptedPassword(user, encryptedPassword) {
-    //   console.log(`${user.password} vs ${encryptedPassword}`);
-    if (encryptedPassword !== user.password) {
-        return new ValidationResult("Incorrect password", null);
-    } else {
-        return new ValidationResult(null, encryptedPassword);
-    }
+  console.log(`${user.password} vs ${encryptedPassword}`);
+  if (encryptedPassword !== user.password) {
+    return new ValidationResult("Incorrect password", null);
+  } else {
+    return new ValidationResult(null, encryptedPassword);
+  }
 }
 
 function validateUnecryptedPassword(username, unencryptedPassword) {
@@ -73,54 +75,66 @@ function validateUnecryptedPassword(username, unencryptedPassword) {
 //     return validateEncryptedPassword(user, cookie['password']);
 // }
 
-userRouter.post("/api/login", (req, res) => {
-    const username = req.body.username;
-    const validationResult = validateUnecryptedPassword(
-        username,
-        req.body.password
-    );
-    //   console.log(validationResult);
-    if (validationResult.validationError) {
-        res.status(401).send({
-            validationError: validationResult.validationError,
-        });
-        return;
-    }
-    const maxAgeMinutes = req.body.rememberMe ? 60 * 24 * 30 : 30;
-    const maxAge = 1000 * 60 * maxAgeMinutes;
-    const cookieData = {
+//TODO: remove later
+function createActivityLog(activityType, DateAndTime, username, activityState){
+    return {
         username: username,
-        password: validationResult.encryptedPassword,
+        DateAndTime: DateAndTime,
+        activityType: activityType,
+        activityState: activityState,
     };
-    res.cookie("loginCookie", cookieData, { maxAge: maxAge, httpOnly: true });
-    res.status(200).send();
+}
+userRouter.post("/api/login", (req, res) => {
+  const username = req.body.username;
+  const usersActivities = JSON5.parse(fs.readFileSync(USER_DATA_ACTIVITY));
+  const validationResult = validateUnecryptedPassword(
+    username,
+    req.body.password
+  );
+  console.log(validationResult);
+  if (validationResult.validationError) {
+    res.status(401).send({
+      validationError: validationResult.validationError,
+    });
+    insertToUsersActivities('Login', username, 'Faliure')
+    // TODO: remove
+    // usersActivities.push(createActivityLog('Login', new Date(), username, 'Failure'));
+    // fs.writeFileSync(USER_DATA_ACTIVITY, JSON5.stringify(usersActivities, null, 2));
+    return;
+  }
+  const maxAgeMinutes = req.body.rememberMe ? 60 * 24 * 30 : 30;
+  const maxAge = 1000 * 60 * maxAgeMinutes;
+  const cookieData = {
+    username: username,
+    password: validationResult.encryptedPassword,
+  };
+  res.cookie("loginCookie", cookieData, { maxAge: maxAge, httpOnly: true });
+  
+  insertToUsersActivities('Login', username, 'Success')
+  // TODO: remove
+  // usersActivities.push(createActivityLog('Login', new Date(), username, 'Success'));
+  // fs.writeFileSync(USER_DATA_ACTIVITY, JSON5.stringify(usersActivities, null, 2));
+  res.status(200).send();
 });
 
 userRouter.get("/api/getUserDetails", (req, res) => {
-    const { loginCookie } = req.cookies;
-    if (!loginCookie) {
-        res.status(401).send({
-            validationError: "No cookie",
-        });
-        return;
-    }
-    //   console.log(loginCookie.username, loginCookie.password);
-    const user = findUser(loginCookie.username);
-    const validationResult = validateEncryptedPassword(
-        user,
-        loginCookie.password
-    );
-    //   console.log(validationResult);
-    if (validationResult.validationError) {
-        res.status(401).send({
-            validationError: validationResult.validationError,
-        });
-        return;
-    }
-    const allUsersCart = JSON5.parse(fs.readFileSync(CART_DATA_FILE_PATH));
-    res.status(200).send({
-        username: loginCookie.username,
-        cartSize: (allUsersCart[loginCookie.username] || []).length,
+  const { loginCookie } = req.cookies;
+  if (!loginCookie) {
+    res.status(401).send({
+      validationError: "No cookie",
+    });
+    return;
+  }
+  console.log(loginCookie.username, loginCookie.password);
+  const user = findUser(loginCookie.username);
+  const validationResult = validateEncryptedPassword(
+    user,
+    loginCookie.password
+  );
+  console.log(validationResult);
+  if (validationResult.validationError) {
+    res.status(401).send({
+      validationError: validationResult.validationError,
     });
 });
 
@@ -154,94 +168,103 @@ userRouter.post("/api/register", (req, res) => {
 });
 
 userRouter.get("/api/logout", (req, res) => {
-    res.clearCookie("loginCookie");
-    res.status(200).send();
+  res.clearCookie("loginCookie");
+  const usersActivities = JSON5.parse(fs.readFileSync(USER_DATA_ACTIVITY));
+  usersActivities.push(createActivityLog('Logout', new Date(), req.cookies.loginCookie.username, 'Success'));
+  fs.writeFileSync(USER_DATA_ACTIVITY, JSON5.stringify(usersActivities, null, 2));
+  res.status(200).send();
 });
 
 userRouter.get("/api/getUserCart", (req, res) => {
     const { loginCookie } = req.cookies;
     if (!loginCookie) {
-        res.status(401).send({
-            validationError: "No cookie",
-        });
-        return;
+      res.status(401).send({
+        validationError: "No cookie",
+      });
+      return;
     }
-    //   console.log(loginCookie.username, loginCookie.password);
+    console.log(loginCookie.username, loginCookie.password);
     const user = findUser(loginCookie.username);
     const validationResult = validateEncryptedPassword(
-        user,
-        loginCookie.password
+      user,
+      loginCookie.password
     );
-    //   console.log(validationResult);
+    console.log(validationResult);
     if (validationResult.validationError) {
-        res.status(401).send({
-            validationError: validationResult.validationError,
-        });
-        return;
+      res.status(401).send({
+        validationError: validationResult.validationError,
+      });
+      return;
     }
     const allUsersCart = JSON5.parse(fs.readFileSync(CART_DATA_FILE_PATH));
     res.status(200).send({
-        userCartItems: allUsersCart[loginCookie.username] || [],
+      userCartItems: allUsersCart[loginCookie.username] || [],
     });
-});
+  });
+  
 
-userRouter.post("/api/addItemToCart", (req, res) => {
+  userRouter.post("/api/addItemToCart", (req, res) => {
     const { productId, qty } = req.body;
     const { loginCookie } = req.cookies;
     if (!loginCookie) {
-        res.status(401).send({
-            validationError: "No cookie",
-        });
-        return;
+      res.status(401).send({
+        validationError: "No cookie",
+      });
+      return;
     }
-    //   console.log(loginCookie.username, loginCookie.password);
+    console.log(loginCookie.username, loginCookie.password);
     const user = findUser(loginCookie.username);
     const validationResult = validateEncryptedPassword(
-        user,
-        loginCookie.password
+      user,
+      loginCookie.password
     );
-    //   console.log(validationResult);
+    console.log(validationResult);
     if (validationResult.validationError) {
-        res.status(401).send({
-            validationError: validationResult.validationError,
-        });
-        return;
+      res.status(401).send({
+        validationError: validationResult.validationError,
+      });
+      return;
     }
     const allUsersCart = JSON5.parse(fs.readFileSync(CART_DATA_FILE_PATH));
+    const usersActivities = JSON5.parse(fs.readFileSync(USER_DATA_ACTIVITY));
+  
+    usersActivities.push(createActivityLog(`Add To Cart: Prodect ID: ${productId}`, new Date(), loginCookie.username, 'Success'));
+    fs.writeFileSync(USER_DATA_ACTIVITY, JSON5.stringify(usersActivities, null, 2));
+  
     allUsersCart[loginCookie.username] = allUsersCart[loginCookie.username] || {};
     allUsersCart[loginCookie.username][productId] = qty;
     fs.writeFileSync(CART_DATA_FILE_PATH, JSON5.stringify(allUsersCart, null, 2));
     res.status(200).send();
-});
+  });
 
 
 userRouter.post("/api/removeItemFromCart", (req, res) => {
-    const { productId } = req.body;
-    const { loginCookie } = req.cookies;
-    if (!loginCookie) {
-        res.status(401).send({
-            validationError: "No cookie",
-        });
-        return;
-    }
-    //   console.log(loginCookie.username, loginCookie.password);
-    const user = findUser(loginCookie.username);
-    const validationResult = validateEncryptedPassword(
-        user,
-        loginCookie.password
-    );
-    //   console.log(validationResult);
-    if (validationResult.validationError) {
-        res.status(401).send({
-            validationError: validationResult.validationError,
-        });
-        return;
-    }
-    const allUsersCart = JSON5.parse(fs.readFileSync(CART_DATA_FILE_PATH));
-    allUsersCart[loginCookie.username] = allUsersCart[loginCookie.username] || {};
-    delete allUsersCart[loginCookie.username][productId];
-    fs.writeFileSync(CART_DATA_FILE_PATH, JSON5.stringify(allUsersCart, null, 2));
-    res.status(200).send();
+  const { productId } = req.body;
+  const { loginCookie } = req.cookies;
+  if (!loginCookie) {
+    res.status(401).send({
+      validationError: "No cookie",
+    });
+    return;
+  }
+  console.log(loginCookie.username, loginCookie.password);
+  const user = findUser(loginCookie.username);
+  const validationResult = validateEncryptedPassword(
+    user,
+    loginCookie.password
+  );
+  console.log(validationResult);
+  if (validationResult.validationError) {
+    res.status(401).send({
+      validationError: validationResult.validationError,
+    });
+    return;
+  }
+  const allUsersCart = JSON5.parse(fs.readFileSync(CART_DATA_FILE_PATH));
+  allUsersCart[loginCookie.username] = allUsersCart[loginCookie.username] || {};
+  delete allUsersCart[loginCookie.username][productId];
+  fs.writeFileSync(CART_DATA_FILE_PATH, JSON5.stringify(allUsersCart, null, 2));
+  res.status(200).send();
 });
 
 
@@ -360,5 +383,12 @@ userRouter.post("/api/removeCart", (req, res) => {
     fs.writeFileSync(CART_DATA_FILE_PATH, JSON5.stringify(allUsersCart, null, 2));
     res.status(200).send();
 });
+
+userRouter.get('/api/userActivity', (req, res) => {
+    // TODO: make sure the user is an admin
+    res.send(JSON5.parse(fs.readFileSync(USER_DATA_ACTIVITY)));
+});
+
+
 
 export default userRouter;
