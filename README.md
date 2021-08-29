@@ -1,6 +1,7 @@
 ﻿# Sticker'sForGeeks ECommerce Website
 
 A WEB application that co-responds to fully-functional e-commerce website.</br>
+
 ![Sticker'sForGeeks ](/template/images/StickForGeeks.jpg)
 
 # Built With

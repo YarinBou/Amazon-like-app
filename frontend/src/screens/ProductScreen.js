@@ -81,7 +81,7 @@ export default function ProductScreen(props) {
                     {product.reviews
                       .filter((r) => r.text)
                       .map((r) => (
-                        <li>
+                        <li key="{r}">
                           <Review data={r} />
                         </li>
                       ))}

@@ -13,7 +13,6 @@ import PaymentMethodScreen from "./screens/PaymentMethodScreen";
 import PlaceOrderScreen from "./screens/PlaceOrderScreen";
 import OrderScreen from "./screens/OrderScreen";
 import WishListScreen from "./screens/WishListScreen";
-import { useSelector } from "react-redux";
 import AddReviewScreen from "./screens/AddReviewScreen";
 
 function App() {
