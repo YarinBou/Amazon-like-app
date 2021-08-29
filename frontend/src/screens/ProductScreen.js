@@ -62,7 +62,7 @@ export default function ProductScreen(props) {
                 <li>
                   <Rating
                     rating={
-                      product.reviews.length == 0
+                      product.reviews.length === 0
                         ? 0
                         : product.reviews
                             .map((r) => r.rating)

@@ -14,7 +14,7 @@ export default function Product(props) {
           <h2 className="productName">{product.name}</h2>
         </Link>
         <Rating 
-          rating={product.reviews.length == 0 ? 0 : product.reviews.map(r => r.rating).reduce((a, b) => a+b, 0) / product.reviews.length}
+          rating={product.reviews.length === 0 ? 0 : product.reviews.map(r => r.rating).reduce((a, b) => a+b, 0) / product.reviews.length}
           numReviews={product.reviews.length} />
         <div className="price">${product.price}</div>
       </div>

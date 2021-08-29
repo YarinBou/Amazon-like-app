@@ -44,7 +44,6 @@ function createNewUser(username, password, fullName, email) {
 }
 
 function validateEncryptedPassword(user, encryptedPassword) {
-  console.log(`${user.password} vs ${encryptedPassword}`);
   if (encryptedPassword !== user.password) {
     return new ValidationResult("Incorrect password", null);
   } else {
@@ -86,12 +85,11 @@ function createActivityLog(activityType, DateAndTime, username, activityState){
 }
 userRouter.post("/api/login", (req, res) => {
   const username = req.body.username;
-  const usersActivities = JSON5.parse(fs.readFileSync(USER_DATA_ACTIVITY));
+  // const usersActivities = JSON5.parse(fs.readFileSync(USER_DATA_ACTIVITY));
   const validationResult = validateUnecryptedPassword(
     username,
     req.body.password
   );
-  console.log(validationResult);
   if (validationResult.validationError) {
     res.status(401).send({
       validationError: validationResult.validationError,
@@ -125,17 +123,22 @@ userRouter.get("/api/getUserDetails", (req, res) => {
     });
     return;
   }
-  console.log(loginCookie.username, loginCookie.password);
   const user = findUser(loginCookie.username);
   const validationResult = validateEncryptedPassword(
     user,
     loginCookie.password
   );
-  console.log(validationResult);
   if (validationResult.validationError) {
     res.status(401).send({
       validationError: validationResult.validationError,
     });
+    return;
+  }
+  const allUsersCart = JSON5.parse(fs.readFileSync(CART_DATA_FILE_PATH));
+  res.status(200).send({
+    username: loginCookie.username,
+    cartSize: (allUsersCart[loginCookie.username] || []).length,
+  });
 });
 
 userRouter.post("/api/register", (req, res) => {
@@ -183,13 +186,11 @@ userRouter.get("/api/getUserCart", (req, res) => {
       });
       return;
     }
-    console.log(loginCookie.username, loginCookie.password);
     const user = findUser(loginCookie.username);
     const validationResult = validateEncryptedPassword(
       user,
       loginCookie.password
     );
-    console.log(validationResult);
     if (validationResult.validationError) {
       res.status(401).send({
         validationError: validationResult.validationError,
@@ -212,13 +213,11 @@ userRouter.get("/api/getUserCart", (req, res) => {
       });
       return;
     }
-    console.log(loginCookie.username, loginCookie.password);
     const user = findUser(loginCookie.username);
     const validationResult = validateEncryptedPassword(
       user,
       loginCookie.password
     );
-    console.log(validationResult);
     if (validationResult.validationError) {
       res.status(401).send({
         validationError: validationResult.validationError,
@@ -247,13 +246,11 @@ userRouter.post("/api/removeItemFromCart", (req, res) => {
     });
     return;
   }
-  console.log(loginCookie.username, loginCookie.password);
   const user = findUser(loginCookie.username);
   const validationResult = validateEncryptedPassword(
     user,
     loginCookie.password
   );
-  console.log(validationResult);
   if (validationResult.validationError) {
     res.status(401).send({
       validationError: validationResult.validationError,
@@ -295,29 +292,6 @@ userRouter.post("/api/Payment", (req) => {
     fs.writeFileSync(
         USER_SHIPPING_DATA_FILE_PATH,
         JSON5.stringify(ShippingDetails, null, 2)
-    );
-});
-
-userRouter.post("/api/placeorder", (req) => {
-    // const { PaymentMethod } = req.body;
-    // const { loginCookie } = req.cookies;
-    // const username = findUser(loginCookie.username).username;
-    // const username = loginCookie.username;
-
-    const allUsersDetails = JSON5.parse(
-        fs.readFileSync(USER_SHIPPING_DATA_FILE_PATH)
-    );
-    // console.log(allUsersDetails.filter(function(item){
-    //     return item.username == username;
-    // }));
-    // console.log(allUsersDetails.filter(function(item){
-    //     return item.username == username;})["PaymentMethod"])
-
-    // console.log(allUsersDetails[username]["PaymentMethod"]);
-
-    fs.writeFileSync(
-        USER_SHIPPING_DATA_FILE_PATH,
-        JSON5.stringify(allUsersDetails, null, 2)
     );
 });
 
@@ -364,13 +338,11 @@ userRouter.post("/api/removeCart", (req, res) => {
         });
         return;
     }
-    //   console.log(loginCookie.username, loginCookie.password);
     const user = findUser(loginCookie.username);
     const validationResult = validateEncryptedPassword(
         user,
         loginCookie.password
     );
-    //   console.log(validationResult);
     if (validationResult.validationError) {
         res.status(401).send({
             validationError: validationResult.validationError,
