@@ -11,10 +11,14 @@ import ShippingAddressScreen from "./screens/ShippingAddressScreen";
 import PaymentMethodScreen from "./screens/PaymentMethodScreen";
 import PlaceOrderScreen from "./screens/PlaceOrderScreen";
 import OrderScreen from "./screens/OrderScreen";
+import WishListScreen from "./screens/WishListScreen";
+import { useSelector } from "react-redux";
 
 function App() {
   const [username, setUserName] = useState(undefined);
   const [cartSize, setCartSize] = useState(undefined);
+
+
 
   useEffect(async () => {
     try {
@@ -39,7 +43,7 @@ function App() {
             </Link>
           </div>
           <div>
-            <Link to="/like">
+            <Link to="/wishlist">
               <i className="fa fa-heart" aria-hidden="true"></i>
             </Link>
             <Link to="/cart">
@@ -71,6 +75,7 @@ function App() {
           <Route path="/Payment" component={PaymentMethodScreen}></Route>
           <Route path="/placeorder" component={PlaceOrderScreen}></Route>
           <Route path="/orderScreen" component={OrderScreen}></Route>
+          <Route path="/wishlist/:id?" component={WishListScreen}></Route>
           <Route path="/" component={HomeScreen} exact></Route>
         </main>
         <footer className="row center">All right reserved</footer>

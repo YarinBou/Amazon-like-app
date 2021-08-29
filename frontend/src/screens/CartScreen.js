@@ -74,10 +74,6 @@ export default function CartScreen(props) {
     await refreshUserCart();
   };
 
-  // const checkoutHandler = () => {
-  //   props.history.push("/login?redirect=shipping");
-  // };
-
   const checkoutHandler = () => {
     props.history.push("/shipping");
   };
