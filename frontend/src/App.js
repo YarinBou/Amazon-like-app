@@ -62,7 +62,7 @@ function App() {
                 </i>
               ) : (
                 <i className="fa fa-sign-out" aria-hidden="true">
-                  <span className="userName"> {username}</span>
+                  <span className="userName"> Logout ({username})</span>
                 </i>
               )}
             </Link>
