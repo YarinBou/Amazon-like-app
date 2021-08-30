@@ -2,8 +2,9 @@ import express from "express";
 import cookieParser from "cookie-parser";
 import fs from "fs";
 import JSON5 from "json5";
-const PRODUCTS_PATH = "backend/data/products.json5"
+import { insertToProdcuts, insertProductReview } from "../persist.js";
 
+const PRODUCTS_PATH = "backend/data/products.json5";
 
 const productRouter = express.Router();
 productRouter.use(express.json());
@@ -17,7 +18,6 @@ productRouter.delete("/product/:productId", (req, res) => {
 
   for (const idx in allProducts) {
     if (allProducts[idx]._id == productId) {
-      console.log("## got here");
       allProducts.splice(idx, 1);
       fs.writeFileSync(PRODUCTS_PATH, JSON5.stringify(allProducts, null, 2));
       res.status(200).send();
@@ -33,19 +33,44 @@ productRouter.delete("/product/:productId", (req, res) => {
 productRouter.post("/api/addReview", (req, res) => {
   const { rating, text, productId } = req.body;
 
-  if (findUser(username) != null) {
-    res.status(409).send({
-      validationError: "User already exists",
+  try {
+    insertProductReview(rating, text, productId);
+  } catch (error) {
+    res.status(500).send({
+      validationError: `Internal Server Error: ${error}`,
     });
-    return;
   }
-  const encryptedPassword = req.body.password;
-  if (encryptedPassword.length <= 6) {
-    res.status(400).send({
-      validationError: "Password is too short",
+  res.status(200).send();
+  return;
+});
+
+productRouter.post("/api/admin/add", (req, res) => {
+  const {
+    name,
+    category,
+    image,
+    price,
+    brand,
+    countInStock,
+    description,
+  } = req.body;
+  try {
+    insertToProdcuts(
+      name,
+      category,
+      image,
+      price,
+      brand,
+      countInStock,
+      description
+    );
+  } catch (error) {
+    res.status(500).send({
+      validationError: `Internal Server Error: ${error}`,
     });
-    return;
   }
+  res.status(200).send({ status: "Product was added successfully" });
+  return;
 });
 
 export default productRouter;
