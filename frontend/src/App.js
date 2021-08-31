@@ -59,7 +59,11 @@ function App() {
                 </i>
               )}
             </Link>
-            {username === null && <Link to="/register"><span className="userName">Register</span></Link>}
+            {username === null && (
+              <Link to="/register">
+                <span className="userName">Register</span>
+              </Link>
+            )}
           </div>
         </header>
         <main>
