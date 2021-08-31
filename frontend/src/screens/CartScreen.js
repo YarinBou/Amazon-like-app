@@ -55,12 +55,13 @@ export default function CartScreen(props) {
           qty: qty,
         });
       } catch (e) {
-        if (e.response.data.validationError === "Incorrect password") {
+        if (e.response.data.validationError === 'Incorrect password' || e.response.data.validationError === 'No cookie') {
           props.history.push("/login");
+          setCartItems([]);
           return;
         }
         console.log(e.response.data.validationError);
-        setCartItems(null);
+        setCartItems([]);
       }
     }
     await refreshUserCart();
@@ -71,12 +72,12 @@ export default function CartScreen(props) {
       try {
         await Axios.post("/api/removeItemFromCart", { productId: productId });
       } catch (e) {
-        if (e.response.data.validationError === "Incorrect password") {
+        if ((e.response.data.validationError === 'Incorrect password' || e.response.data.validationError === 'No cookie')) {
           props.history.push("/login");
           return;
         }
         console.log(e.response.data.validationError);
-        setCartItems(null);
+        setCartItems([]);
       }
     }
     await refreshUserCart();
@@ -104,14 +105,13 @@ export default function CartScreen(props) {
   return (
     <div className="row top">
       <div className="col-2">
-        <h1> Shopping Cart </h1>{" "}
-        {cartItems.length === 0 ? (
+        <h1>Shopping Cart</h1>
+        {cartItems === null || cartItems.length === 0 ? (
           <MessageBox>
-            Cart is empty. <Link to="/"> Go Shopping </Link>{" "}
+            Cart is empty. <Link to="/">Go Shopping</Link>
           </MessageBox>
         ) : (
           <ul>
-            {" "}
             {cartItems.map((item) => (
               <li key={item.product}>
                 <div className="row">
@@ -120,11 +120,11 @@ export default function CartScreen(props) {
                       src={item.image}
                       alt={item.name}
                       className="small"
-                    ></img>{" "}
-                  </div>{" "}
+                    ></img>
+                  </div>
                   <div className="min-30">
-                    <Link to={`/product/${item.product}`}> {item.name} </Link>{" "}
-                  </div>{" "}
+                    <Link to={`/product/${item.product}`}>{item.name}</Link>
+                  </div>
                   <div>
                     <select
                       value={item.qty}
@@ -134,39 +134,35 @@ export default function CartScreen(props) {
                     >
                       {[...Array(item.countInStock).keys()].map((x) => (
                         <option key={x + 1} value={x + 1}>
-                          {" "}
-                          {x + 1}{" "}
+                          {x + 1}
                         </option>
-                      ))}{" "}
-                    </select>{" "}
-                  </div>{" "}
-                  <div> $ {item.price} </div>{" "}
+                      ))}
+                    </select>
+                  </div>
+                  <div>${item.price}</div>
                   <div>
                     <button
                       type="button"
                       onClick={() => removeFromCartHandler(item.product)}
                     >
-                      Delete{" "}
-                    </button>{" "}
-                  </div>{" "}
-                </div>{" "}
+                      Delete
+                    </button>
+                  </div>
+                </div>
               </li>
-            ))}{" "}
+            ))}
           </ul>
-        )}{" "}
-      </div>{" "}
+        )}
+      </div>
       <div className="col-1">
         <div className="card card-body">
           <ul>
             <li>
               <h2>
-                Subtotal({cartItems.reduce((a, c) => a + c.qty, 0)}
-                items): $ {cartItems.reduce(
-                  (a, c) => a + c.price * c.qty,
-                  0
-                )}{" "}
-              </h2>{" "}
-            </li>{" "}
+                Subtotal ({cartItems.reduce((a, c) => a + c.qty, 0)} items) : $
+                {cartItems.reduce((a, c) => a + c.price * c.qty, 0)}
+              </h2>
+            </li>
             <li>
               <button
                 type="button"
@@ -174,12 +170,12 @@ export default function CartScreen(props) {
                 className="primary block"
                 disabled={cartItems.length === 0}
               >
-                Proceed to Checkout{" "}
-              </button>{" "}
-            </li>{" "}
-          </ul>{" "}
-        </div>{" "}
-      </div>{" "}
+                Proceed to Checkout
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   );
 }
