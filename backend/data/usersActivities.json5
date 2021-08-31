@@ -1135,4 +1135,34 @@
     activityType: 'Add To Cart: Prodect ID: 1',
     activityState: 'Success',
   },
+  {
+    username: 'yarin1',
+    DateAndTime: '2021-08-31T11:58:13.135Z',
+    activityType: 'Login',
+    activityState: 'Success',
+  },
+  {
+    username: 'yarin1',
+    DateAndTime: '2021-08-31T11:58:18.934Z',
+    activityType: 'Add To Cart: Prodect ID: 4',
+    activityState: 'Success',
+  },
+  {
+    username: 'yarin1',
+    DateAndTime: '2021-08-31T12:29:42.145Z',
+    activityType: 'Login',
+    activityState: 'Success',
+  },
+  {
+    username: 'yarin1',
+    DateAndTime: '2021-08-31T12:29:47.674Z',
+    activityType: 'Logout',
+    activityState: 'Success',
+  },
+  {
+    username: 'yarin1',
+    DateAndTime: '2021-08-31T12:29:50.473Z',
+    activityType: 'Login',
+    activityState: 'Success',
+  },
 ]

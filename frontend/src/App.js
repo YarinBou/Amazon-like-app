@@ -14,6 +14,7 @@ import PlaceOrderScreen from "./screens/PlaceOrderScreen";
 import OrderScreen from "./screens/OrderScreen";
 import WishListScreen from "./screens/WishListScreen";
 import AddReviewScreen from "./screens/AddReviewScreen";
+import Readme from "./screens/Readme.js";
 
 function App() {
   const [username, setUserName] = useState(undefined);
@@ -80,6 +81,7 @@ function App() {
           <Route path="/orderScreen" component={OrderScreen}></Route>
           <Route path="/wishlist/:id?" component={WishListScreen}></Route>
           <Route path="/" component={HomeScreen} exact></Route>
+          <Route path="/readme.html" component={Readme} exact></Route>
         </main>
         <footer className="row center">All right reserved</footer>
       </div>

@@ -5,7 +5,7 @@
     city: 'Ashdod',
     postalCode: '7751438',
     country: 'ישראל',
-    PaymentMethod: 'Stripe',
+    PaymentMethod: 'PayPal',
   },
   Gross: {
     fullName: 'Yardena  Berkovic',
