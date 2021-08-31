@@ -4,7 +4,6 @@ import Axios from "axios";
 
 function ActivityLogEntry(props){
     const log = props.logData;
-    // TODO: add key property with randomly generated ID for log
     return (
         <li>
             {log.DateAndTime} ] User {log.username}, did {log.activityType}, state: {log.activityState}
@@ -14,7 +13,7 @@ function ActivityLogEntry(props){
 
 function ActivityLogList(props) {
     function logToEntry(log, i){
-        return <ActivityLogEntry logData={log}></ActivityLogEntry>
+        return <ActivityLogEntry key={i} logData={log}></ActivityLogEntry>
     }
     return (
       <ol>
@@ -27,9 +26,7 @@ function ActivityLogSearch(props) {
 
     function filterLogs(logs, searchText){
         console.log(`Filtering by ${searchText}`);
-        console.log(logs);
         const filtered = logs.filter(log => log.username.startsWith(searchText));
-        console.log(filtered);
         return filtered;
     }
 

@@ -10,10 +10,22 @@ const productRouter = express.Router();
 productRouter.use(express.json());
 productRouter.use(cookieParser());
 
+export function isAdmin(req){
+    const { loginCookie } = req.cookies;
+    if (!loginCookie) {
+        return false;
+    }
+    return isUserAdmin(loginCookie.username);
+}
+
 productRouter.delete("/product/:productId", (req, res) => {
     const productId = req.params.productId;
-    console.log(productId);
-
+    const isUserAdmin = isAdmin(req);
+    if(!isUserAdmin){
+        res.status(401).send({
+            validationError: "You are not an admin!.",
+        });
+    }
     const allProducts = JSON5.parse(fs.readFileSync(PRODUCTS_PATH));
 
     for (const idx in allProducts) {
@@ -47,6 +59,12 @@ productRouter.post("/api/addReview", (req, res) => {
 productRouter.post("/api/admin/add", (req, res) => {
     const { name, category, image, price, brand, countInStock, description } =
     req.body;
+    const isUserAdmin = isAdmin(req);
+    if(!isUserAdmin){
+        res.status(401).send({
+            validationError: "You are not an admin!.",
+        });
+    }
     try {
         insertToProdcuts(
             name,
