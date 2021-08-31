@@ -87,7 +87,7 @@ export function insertToProdcuts(
     const productId = getHigestProdcutId() + 1;
     allProducts.push(
         createProductRecord(
-            productId,
+            '' + productId,
             name,
             category,
             image,
@@ -109,6 +109,16 @@ export function insertProductReview(rating, text, productId) {
         }
     }
     fs.writeFileSync(PRODUCTS_FILE_PATH, JSON5.stringify(allProducts, null, 2));
+}
+
+export function isUserAdmin(username) {
+    const allUsers = getAllUsers();
+    for (const user of allUsers) {
+        if (user.username === username) {
+            return user.isAdmin;
+        }
+    }
+    return false;
 }
 
 export function getAllUsers() {
