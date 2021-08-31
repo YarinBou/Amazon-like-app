@@ -1,303 +1,307 @@
 [
-    {
-        "_id": "1",
-        "name": "computer1",
-        "category": "computer",
-        "image": "/images/p3.jpg",
-        "price": 120,
-        "brand": "computer",
-        "countInStock": 10,
-        "description": "high quality product",
-        "reviews": [
-            {
-                "rating": 5
-            },
-            {
-                "rating": 4
-            },
-            {
-                "rating": 5
-            },
-            {
-                "rating": 4,
-                "text": "Did not like the product"
-            }
-        ],
-    },
-    {
-        "_id": "2",
-        "name": "Camera1",
-        "category": "Camera",
-        "image": "/images/p5.jpg",
-        "price": 100,
-        "brand": "Camera",
-        "countInStock": 15,
-        "description": "high quality product",
-        "reviews": [
-            {
-                "rating": 5
-            },
-            {
-                "rating": 4
-            },
-            {
-                "rating": 5
-            },
-            {
-                "rating": 4,
-                "text": "Did not like the product"
-            }
-        ],
-    },
-    {
-        "_id": "3",
-        "name": "headphones1",
-        "category": "headphones",
-        "image": "/images/p6.jpg",
-        "price": 220,
-        "brand": "headphones",
-        "countInStock": 0,
-        "description": "high quality product",
-        "reviews": [
-            {
-                "rating": 5,
-                "text": "Loved it!",
-            },
-            {
-                "rating": 4
-            },
-            {
-                "rating": 5
-            },
-            {
-                "rating": 4,
-                "text": "Did not like the product"
-            }
-        ],
-    },
-    {
-        "_id": "4",
-        "name": "headphones2",
-        "category": "headphones",
-        "image": "/images/p6.jpg",
-        "price": 78,
-        "brand": "headphones",
-        "countInStock": 10,
-        "description": "high quality product",
-        "reviews": [
-            {
-                "rating": 5
-            },
-            {
-                "rating": 4
-            },
-            {
-                "rating": 5
-            },
-            {
-                "rating": 4,
-                "text": "Did not like the product"
-            }
-        ],
-    },
-    {
-        "_id": "5",
-        "name": "Camera2",
-        "category": "Camera",
-        "image": "/images/p5.jpg",
-        "price": 65,
-        "brand": "Camera",
-        "countInStock": 10,
-        "description": "high quality product",
-        "reviews": [
-            {
-                "rating": 5
-            },
-            {
-                "rating": 4
-            },
-            {
-                "rating": 5
-            },
-            {
-                "rating": 4,
-                "text": "Did not like the product"
-            }
-        ],
-    },
-    {
-        "_id": "6",
-        "name": "computer2",
-        "category": "computer",
-        "image": "/images/p3.jpg",
-        "price": 139,
-        "brand": "computer",
-        "countInStock": 2,
-        "description": "high quality product",
-        "reviews": [
-            {
-                "rating": 5
-            },
-            {
-                "rating": 4
-            },
-            {
-                "rating": 5
-            },
-            {
-                "rating": 4,
-                "text": "Did not like the product"
-            }
-        ],
-    },
-    {
-        "_id": "7",
-        "name": "computer3",
-        "category": "computer",
-        "image": "/images/p3.jpg",
-        "price": 120,
-        "brand": "computer",
-        "countInStock": 3,
-        "description": "high quality product",
-        "reviews": [
-            {
-                "rating": 5
-            },
-            {
-                "rating": 4
-            },
-            {
-                "rating": 5
-            },
-            {
-                "rating": 4,
-                "text": "Did not like the product"
-            }
-        ],
-    },
-    {
-        "_id": "8",
-        "name": "Camera3",
-        "category": "Camera",
-        "image": "/images/p5.jpg",
-        "price": 100,
-        "brand": "Camera",
-        "countInStock": 8,
-        "description": "high quality product",
-        "reviews": [
-            {
-                "rating": 5
-            },
-            {
-                "rating": 4
-            },
-            {
-                "rating": 5
-            },
-            {
-                "rating": 4,
-                "text": "Did not like the product"
-            }
-        ],
-    },
-    {
-        "_id": "9",
-        "name": "headphones3",
-        "category": "headphones",
-        "image": "/images/p6.jpg",
-        "price": 220,
-        "brand": "headphones",
-        "countInStock": 2,
-        "description": "high quality product",
-        "reviews": [
-            {
-                "rating": 5
-            },
-            {
-                "rating": 4
-            },
-            {
-                "rating": 5
-            },
-            {
-                "rating": 4,
-                "text": "Did not like the product"
-            }
-        ],
-    },
-    {
-        "_id": "10",
-        "name": "headphones4",
-        "category": "headphones",
-        "image": "/images/p6.jpg",
-        "price": 78,
-        "brand": "headphones",
-        "countInStock": 10,
-        "description": "high quality product",
-        "reviews": [
-            {
-                "rating": 5
-            },
-            {
-                "rating": 4
-            },
-            {
-                "rating": 5
-            },
-            {
-                "rating": 4,
-                "text": "Did not like the product"
-            }
-        ],
-    },
-    {
-        "_id": "11",
-        "name": "Camera4",
-        "category": "Camera",
-        "image": "/images/p5.jpg",
-        "price": 65,
-        "brand": "Camera",
-        "countInStock": 10,
-        "description": "high quality product",
-        "reviews": [
-            {
-                "rating": 5
-            },
-            {
-                "rating": 4
-            },
-            {
-                "rating": 5
-            },
-            {
-                "rating": 4,
-                "text": "Did not like the product"
-            }
-        ],
-    },
-    {
-        "_id": "12",
-        "name": "computer4",
-        "category": "computer",
-        "image": "/images/p3.jpg",
-        "price": 139,
-        "brand": "computer",
-        "countInStock": 10,
-        "description": "high quality product",
-        "reviews": [
-            {
-                "rating": 5
-            },
-            {
-                "rating": 4
-            },
-            {
-                "rating": 5
-            },
-            {
-                "rating": 4,
-                "text": "Did not like the product"
-            }
-        ],
-    }
+  {
+    _id: '1',
+    name: 'computer1',
+    category: 'computer',
+    image: '/images/p3.jpg',
+    price: 120,
+    brand: 'computer',
+    countInStock: 10,
+    description: 'high quality product',
+    reviews: [
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+      },
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+        text: 'Did not like the product',
+      },
+    ],
+  },
+  {
+    _id: '2',
+    name: 'Camera1',
+    category: 'Camera',
+    image: '/images/p5.jpg',
+    price: 100,
+    brand: 'Camera',
+    countInStock: 15,
+    description: 'high quality product',
+    reviews: [
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+      },
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+        text: 'Did not like the product',
+      },
+    ],
+  },
+  {
+    _id: '3',
+    name: 'headphones1',
+    category: 'headphones',
+    image: '/images/p6.jpg',
+    price: 220,
+    brand: 'headphones',
+    countInStock: 0,
+    description: 'high quality product',
+    reviews: [
+      {
+        rating: 5,
+        text: 'Loved it!',
+      },
+      {
+        rating: 4,
+      },
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+        text: 'Did not like the product',
+      },
+    ],
+  },
+  {
+    _id: '4',
+    name: 'headphones2',
+    category: 'headphones',
+    image: '/images/p6.jpg',
+    price: 78,
+    brand: 'headphones',
+    countInStock: 10,
+    description: 'high quality product',
+    reviews: [
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+      },
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+        text: 'Did not like the product',
+      },
+      {
+        rating: 5,
+        text: 'like it',
+      },
+    ],
+  },
+  {
+    _id: '5',
+    name: 'Camera2',
+    category: 'Camera',
+    image: '/images/p5.jpg',
+    price: 65,
+    brand: 'Camera',
+    countInStock: 10,
+    description: 'high quality product',
+    reviews: [
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+      },
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+        text: 'Did not like the product',
+      },
+    ],
+  },
+  {
+    _id: '6',
+    name: 'computer2',
+    category: 'computer',
+    image: '/images/p3.jpg',
+    price: 139,
+    brand: 'computer',
+    countInStock: 2,
+    description: 'high quality product',
+    reviews: [
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+      },
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+        text: 'Did not like the product',
+      },
+    ],
+  },
+  {
+    _id: '7',
+    name: 'computer3',
+    category: 'computer',
+    image: '/images/p3.jpg',
+    price: 120,
+    brand: 'computer',
+    countInStock: 3,
+    description: 'high quality product',
+    reviews: [
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+      },
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+        text: 'Did not like the product',
+      },
+    ],
+  },
+  {
+    _id: '8',
+    name: 'Camera3',
+    category: 'Camera',
+    image: '/images/p5.jpg',
+    price: 100,
+    brand: 'Camera',
+    countInStock: 8,
+    description: 'high quality product',
+    reviews: [
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+      },
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+        text: 'Did not like the product',
+      },
+    ],
+  },
+  {
+    _id: '9',
+    name: 'headphones3',
+    category: 'headphones',
+    image: '/images/p6.jpg',
+    price: 220,
+    brand: 'headphones',
+    countInStock: 2,
+    description: 'high quality product',
+    reviews: [
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+      },
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+        text: 'Did not like the product',
+      },
+    ],
+  },
+  {
+    _id: '10',
+    name: 'headphones4',
+    category: 'headphones',
+    image: '/images/p6.jpg',
+    price: 78,
+    brand: 'headphones',
+    countInStock: 10,
+    description: 'high quality product',
+    reviews: [
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+      },
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+        text: 'Did not like the product',
+      },
+    ],
+  },
+  {
+    _id: '11',
+    name: 'Camera4',
+    category: 'Camera',
+    image: '/images/p5.jpg',
+    price: 65,
+    brand: 'Camera',
+    countInStock: 10,
+    description: 'high quality product',
+    reviews: [
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+      },
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+        text: 'Did not like the product',
+      },
+    ],
+  },
+  {
+    _id: '12',
+    name: 'computer4',
+    category: 'computer',
+    image: '/images/p3.jpg',
+    price: 139,
+    brand: 'computer',
+    countInStock: 10,
+    description: 'high quality product',
+    reviews: [
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+      },
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+        text: 'Did not like the product',
+      },
+    ],
+  },
 ]

@@ -26,12 +26,12 @@ export default class AddProductScreen extends React.Component {
         brand: this.state.brand,
         countInStock: this.state.countInStock,
         description: this.state.description,
-        });
-      this.setState({errorMessage: data.status});
+      });
+      this.setState({ errorMessage: data.status });
       // document.location = "/";
     } catch (e) {
       console.log(e.response.data.validationError);
-      this.setState({errorMessage: e.response.data.validationError});
+      this.setState({ errorMessage: e.response.data.validationError });
     }
   }
 
@@ -49,7 +49,7 @@ export default class AddProductScreen extends React.Component {
               type="text"
               placeholder="Enter Product Name"
               required
-              onChange={(e) => this.setState({name: e.target.value})}
+              onChange={(e) => this.setState({ name: e.target.value })}
             />
           </div>
           <div>
@@ -58,7 +58,7 @@ export default class AddProductScreen extends React.Component {
               type="text"
               placeholder="Enter Category"
               required
-              onChange={(e) => this.setState({category: e.target.value})}
+              onChange={(e) => this.setState({ category: e.target.value })}
             />
           </div>
           <div>
@@ -67,7 +67,7 @@ export default class AddProductScreen extends React.Component {
               type="url"
               placeholder="Enter Image URL"
               required
-              onChange={(e) => this.setState({image: e.target.value})}
+              onChange={(e) => this.setState({ image: e.target.value })}
             />
           </div>
           <div>
@@ -76,7 +76,7 @@ export default class AddProductScreen extends React.Component {
               type="number"
               placeholder="Enter Price in $"
               required
-              onChange={(e) => this.setState({price: e.target.value})}
+              onChange={(e) => this.setState({ price: e.target.value })}
             />
           </div>
           <div>
@@ -85,7 +85,7 @@ export default class AddProductScreen extends React.Component {
               type="text"
               placeholder="Enter Brand"
               required
-              onChange={(e) => this.setState({brand: e.target.value})}
+              onChange={(e) => this.setState({ brand: e.target.value })}
             />
           </div>
           <div>
@@ -94,7 +94,7 @@ export default class AddProductScreen extends React.Component {
               type="text"
               placeholder="Enter Count In Stock"
               required
-              onChange={(e) => this.setState({countInStock: e.target.value})}
+              onChange={(e) => this.setState({ countInStock: e.target.value })}
             />
           </div>
           <div>
@@ -102,7 +102,7 @@ export default class AddProductScreen extends React.Component {
             <textarea
               placeholder="Enter Description"
               required
-              onChange={(e) => this.setState({description: e.target.value})}
+              onChange={(e) => this.setState({ description: e.target.value })}
             />
           </div>
           <div>

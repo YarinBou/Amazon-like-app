@@ -317,6 +317,7 @@ async function run() {
     await setShippingAddress();
     await setPaymentMethod();
     await getShippingDetails();
+    console.log("Done Tests!");
 }
 
 run();

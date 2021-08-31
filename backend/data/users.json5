@@ -31,4 +31,12 @@
     encryptionSalt: '$2a$10$/hQfNZ4RRk8SsDJFcKrHF.',
     isAdmin: false,
   },
+  {
+    username: 'MICHAEL',
+    fullName: 'MICHAEL',
+    email: 'yarinbozaglo@gmail.com',
+    password: '$2a$10$HGSNuoSNnhS6UexVuRndNeMYy9S4f62poijEfCfrgB5.LmzXdac2G',
+    encryptionSalt: '$2a$10$HGSNuoSNnhS6UexVuRndNe',
+    isAdmin: false,
+  },
 ]

@@ -5,7 +5,7 @@
     city: 'Ashdod',
     postalCode: '7751438',
     country: 'ישראל',
-    PaymentMethod: 'PayPal',
+    PaymentMethod: 'Stripe',
   },
   Gross: {
     fullName: 'Yardena  Berkovic',
@@ -13,6 +13,13 @@
     city: 'Tel-Aviv',
     postalCode: '7752368',
     country: 'israel',
-    PaymentMethod: 'Paypal',
+  },
+  MICHAEL: {
+    fullName: 'Yarin Bouzaglo',
+    address: 'israel giladi 18',
+    city: 'Ashdod',
+    postalCode: '7751438',
+    country: 'ישראל',
+    PaymentMethod: 'PayPal',
   },
 }

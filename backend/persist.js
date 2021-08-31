@@ -1,14 +1,14 @@
-"use strict"
-import JSON5 from 'json5';
+"use strict";
+import JSON5 from "json5";
 import bcrypt from "bcryptjs";
 
-import fs from 'fs';
-const USER_DATA_ACTIVITY = 'backend/data/usersActivities.json5'
+import fs from "fs";
+const USER_DATA_ACTIVITY = "backend/data/usersActivities.json5";
 const USER_DATA_FILE_PATH = "backend/data/users.json5";
 const CART_DATA_FILE_PATH = "backend/data/cart.json5";
 const PRODUCTS_FILE_PATH = "backend/data/products.json5";
 const USER_SHIPPING_DATA_FILE_PATH = "backend/data/shippingData.json5";
-const USER_PURCHASES_FILE_PATH = "backend/data/purchases.json5"
+const USER_PURCHASES_FILE_PATH = "backend/data/purchases.json5";
 
 function createNewUser(username, password, fullName, email) {
     const salt = bcrypt.genSaltSync();
@@ -22,7 +22,7 @@ function createNewUser(username, password, fullName, email) {
     };
 }
 
-function createActivityLog(activityType, DateAndTime, username, activityState){
+function createActivityLog(activityType, DateAndTime, username, activityState) {
     return {
         username: username,
         DateAndTime: DateAndTime,
@@ -31,7 +31,16 @@ function createActivityLog(activityType, DateAndTime, username, activityState){
     };
 }
 
-function createProductRecord(id, name, category, image, price, brand, countInStock, description){
+function createProductRecord(
+    id,
+    name,
+    category,
+    image,
+    price,
+    brand,
+    countInStock,
+    description
+) {
     return {
         _id: id,
         name: name,
@@ -44,14 +53,19 @@ function createProductRecord(id, name, category, image, price, brand, countInSto
         reviews: [],
     };
 }
-export function insertToUsersActivities(activityType, username, activityState){
+export function insertToUsersActivities(activityType, username, activityState) {
     const usersActivities = JSON5.parse(fs.readFileSync(USER_DATA_ACTIVITY));
 
-    usersActivities.push(createActivityLog(activityType, new Date(), username, activityState));
-    fs.writeFileSync(USER_DATA_ACTIVITY, JSON5.stringify(usersActivities, null, 2));
+    usersActivities.push(
+        createActivityLog(activityType, new Date(), username, activityState)
+    );
+    fs.writeFileSync(
+        USER_DATA_ACTIVITY,
+        JSON5.stringify(usersActivities, null, 2)
+    );
 }
 
-function getHigestProdcutId(){
+function getHigestProdcutId() {
     const idList = [];
     const allProducts = JSON5.parse(fs.readFileSync(PRODUCTS_FILE_PATH));
     for (const product of allProducts) {
@@ -60,18 +74,37 @@ function getHigestProdcutId(){
     return Math.max(...idList);
 }
 
-export function insertToProdcuts(name, category, image, price, brand, countInStock, description){
+export function insertToProdcuts(
+    name,
+    category,
+    image,
+    price,
+    brand,
+    countInStock,
+    description
+) {
     const allProducts = JSON5.parse(fs.readFileSync(PRODUCTS_FILE_PATH));
     const productId = getHigestProdcutId() + 1;
-    allProducts.push(createProductRecord(productId, name, category, image, price, brand, countInStock, description));
+    allProducts.push(
+        createProductRecord(
+            productId,
+            name,
+            category,
+            image,
+            price,
+            brand,
+            countInStock,
+            description
+        )
+    );
     fs.writeFileSync(PRODUCTS_FILE_PATH, JSON5.stringify(allProducts, null, 2));
 }
 
-export function insertProductReview(rating, text, productId){
+export function insertProductReview(rating, text, productId) {
     const allProducts = JSON5.parse(fs.readFileSync(PRODUCTS_FILE_PATH));
     for (const product of allProducts) {
         if (product._id === productId) {
-            product.reviews.push({rating, text});
+            product.reviews.push({ rating, text });
             break;
         }
     }
@@ -102,7 +135,7 @@ export function getUserPurchases() {
     return JSON5.parse(fs.readFileSync(USER_PURCHASES_FILE_PATH));
 }
 
-export function insertToUsers(username, password, fullName, email){
+export function insertToUsers(username, password, fullName, email) {
     const allUsers = JSON5.parse(fs.readFileSync(USER_DATA_FILE_PATH));
     const newUser = createNewUser(username, password, fullName, email);
     allUsers.push(newUser);
@@ -118,8 +151,7 @@ export function insertProductToUserCart(username, productId, qty) {
 
 export function insertPurchaseToUser(username, orderNumber, purchase) {
     const allUsersPurchases = getUserPurchases();
-    allUsersPurchases[username] =
-        allUsersPurchases[username] || {};
+    allUsersPurchases[username] = allUsersPurchases[username] || {};
     allUsersPurchases[username][orderNumber] = purchase;
     fs.writeFileSync(
         USER_PURCHASES_FILE_PATH,
@@ -140,8 +172,15 @@ export function deleteUserCart(username) {
     fs.writeFileSync(CART_DATA_FILE_PATH, JSON5.stringify(allUsersCart, null, 2));
 }
 
-export function insertShippingDetails(username, fullName, address, city, postalCode, country){
-    const ShippingDetails = getUserShipping()
+export function insertShippingDetails(
+    username,
+    fullName,
+    address,
+    city,
+    postalCode,
+    country
+) {
+    const ShippingDetails = getUserShipping();
 
     ShippingDetails[username] = { fullName, address, city, postalCode, country };
     fs.writeFileSync(
@@ -150,7 +189,7 @@ export function insertShippingDetails(username, fullName, address, city, postalC
     );
 }
 
-export function insertPaymentMethod(username, paymentMethod){
+export function insertPaymentMethod(username, paymentMethod) {
     const ShippingDetails = JSON5.parse(
         fs.readFileSync(USER_SHIPPING_DATA_FILE_PATH)
     );

@@ -77,6 +77,7 @@ userRouter.post("/api/login", (req, res) => {
         password: validationResult.encryptedPassword,
     };
     res.cookie("loginCookie", cookieData, { maxAge: maxAge, httpOnly: true });
+
     insertToUsersActivities("Login", username, "Success");
     res.status(200).send();
 });
@@ -103,7 +104,7 @@ userRouter.get("/api/getUserDetails", (req, res) => {
     const allUsersCart = getAllUsersCart();
     res.status(200).send({
         username: loginCookie.username,
-        cartSize: (Object.keys(allUsersCart[loginCookie.username]) || []).length,
+        // cartSize: (Object.keys(allUsersCart[loginCookie.username]) || []).length,
     });
 });
 
@@ -221,14 +222,14 @@ userRouter.post("/api/removeItemFromCart", (req, res) => {
     res.status(200).send();
 });
 
-userRouter.post("/api/shipping", (req, res) => {
+userRouter.post("/api/shipping", (req) => {
     const { fullName, address, city, postalCode, country } = req.body;
     const { loginCookie } = req.cookies;
     const username = loginCookie.username;
     insertShippingDetails(username, fullName, address, city, postalCode, country);
 });
 
-userRouter.post("/api/Payment", (req, res) => {
+userRouter.post("/api/Payment", (req) => {
     const { PaymentMethod } = req.body;
     const { loginCookie } = req.cookies;
     const username = loginCookie.username;

@@ -6,7 +6,7 @@ import ProductScreen from "./screens/ProductScreen";
 import LoginScreen from "./screens/LoginScreen";
 import LogoutScreen from "./screens/LogoutScreen";
 import RegisterScreen from "./screens/RegisterScreen";
-import AdminScreen from './screens/AdminScreen'
+import AdminScreen from "./screens/AdminScreen";
 import Axios from "axios";
 import ShippingAddressScreen from "./screens/ShippingAddressScreen";
 import PaymentMethodScreen from "./screens/PaymentMethodScreen";
@@ -19,18 +19,17 @@ function App() {
   const [username, setUserName] = useState(undefined);
   const [cartSize, setCartSize] = useState(undefined);
 
-
-
   useEffect(async () => {
     try {
       const result = await Axios.get("/api/getUserDetails");
-      const { username, cartSize } = result.data;
+      // const { username, cartSize } = result.data;
+      const { username } = result.data;
       setUserName(username);
-      setCartSize(cartSize);
+      // setCartSize(cartSize);
     } catch (e) {
       console.log(e.response.data.validationError);
       setUserName(null);
-      setCartSize(0);
+      // setCartSize(0);
     }
   }, []);
 
@@ -49,9 +48,7 @@ function App() {
             </Link>
             <Link to="/cart">
               <i className="fa fa-shopping-cart" aria-hidden="true"></i>
-              {!!cartSize && (
-                <span className="badge">{cartSize}</span>
-              )}
+              {/* {!!cartSize && <span className="badge">{cartSize}</span>} */}
             </Link>
             <Link to={username ? "/logout" : "/login"}>
               {username === undefined ? (
