@@ -87,7 +87,7 @@ export function insertToProdcuts(
     const productId = getHigestProdcutId() + 1;
     allProducts.push(
         createProductRecord(
-            productId,
+            '' + productId,
             name,
             category,
             image,
