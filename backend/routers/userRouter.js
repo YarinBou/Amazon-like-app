@@ -15,6 +15,8 @@ import {
     insertPurchaseToUser,
     deleteUserCart,
 } from "../persist.js";
+import { isAdmin } from "./productRouter.js";
+
 let orderNumber = 1;
 
 const userRouter = express.Router();
@@ -305,7 +307,12 @@ userRouter.post("/api/removeCart", (req, res) => {
 });
 
 userRouter.get("/api/userActivity", (req, res) => {
-    // TODO: make sure the user is an admin
+    const isUserAdmin = isAdmin(req);
+    if(!isUserAdmin){
+        res.status(401).send({
+            validationError: "You are not an admin!.",
+        });
+    }
     res.send(getActivity());
 });
 
