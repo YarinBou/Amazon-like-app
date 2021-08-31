@@ -1,13 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
 import ActivityLogComponent from './ActivityLog';
 import DeleteScreen from './DeleteScreen';
 import AddProductScreen from './AddProductScreen';
 import { Link, Redirect, Route } from "react-router-dom";
+import Axios from "axios";
 
 
 export default function AdminScreen() {
-  // TODO: get logged in user data. If user is admin - show this. If not - show error message (you do not have privileges)
-    return (
+  const [isAdmin, setIsAdmin] = useState(false);
+   useEffect(async () => {
+    try {
+      const result = await Axios.get("/api/authenticateUser");
+      setIsAdmin(result.data);
+    } catch (e) {
+      console.log(e.response.data.validationError);
+    }
+  }, []);
+    return isAdmin ? (
       <div>
         <ul className="adminmenu">
           <li>
@@ -25,5 +34,5 @@ export default function AdminScreen() {
           <Route path="/admin/delete" component={DeleteScreen} />
           <Route exact path="/admin" render={() => <Redirect to="/admin/activity" />} />
       </div>
-    );
+    ): <div>You are not an admin!. Can't access</div>;
   }

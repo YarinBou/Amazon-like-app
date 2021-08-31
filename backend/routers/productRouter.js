@@ -2,7 +2,7 @@ import express from "express";
 import cookieParser from "cookie-parser";
 import fs from "fs";
 import JSON5 from "json5";
-import { insertToProdcuts, insertProductReview } from "../persist.js";
+import { insertToProdcuts, insertProductReview, isUserAdmin } from "../persist.js";
 
 const PRODUCTS_PATH = "backend/data/products.json5";
 
@@ -64,6 +64,18 @@ productRouter.post("/api/admin/add", (req, res) => {
     }
     res.status(200).send({ status: "Product was added successfully" });
     return;
+});
+
+productRouter.get("/api/authenticateUser", (req, res) => {
+    const { loginCookie } = req.cookies;
+    if (!loginCookie) {
+        res.status(401).send({
+            validationError: "No cookie",
+        });
+        return;
+    }
+    const isAdmin = isUserAdmin(loginCookie.username);
+    res.status(200).send(isAdmin);
 });
 
 export default productRouter;
