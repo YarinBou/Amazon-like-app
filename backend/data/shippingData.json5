@@ -7,4 +7,12 @@
     country: 'ישראל',
     PaymentMethod: 'PayPal',
   },
+  Gross: {
+    fullName: 'Yardena  Berkovic',
+    address: 'Settlement Iksal, P.O. Box: 174',
+    city: 'Tel-Aviv',
+    postalCode: '7752368',
+    country: 'israel',
+    PaymentMethod: 'Paypal',
+  },
 }

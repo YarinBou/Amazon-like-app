@@ -109,7 +109,6 @@ userRouter.post("/api/login", (req, res) => {
         password: validationResult.encryptedPassword,
     };
     res.cookie("loginCookie", cookieData, { maxAge: maxAge, httpOnly: true });
-
     insertToUsersActivities("Login", username, "Success");
     // TODO: remove
     // usersActivities.push(createActivityLog('Login', new Date(), username, 'Success'));
@@ -284,7 +283,7 @@ userRouter.post("/api/removeItemFromCart", (req, res) => {
     res.status(200).send();
 });
 
-userRouter.post("/api/shipping", (req) => {
+userRouter.post("/api/shipping", (req, res) => {
     const { fullName, address, city, postalCode, country } = req.body;
     const { loginCookie } = req.cookies;
     const username = loginCookie.username;
@@ -297,9 +296,10 @@ userRouter.post("/api/shipping", (req) => {
         USER_SHIPPING_DATA_FILE_PATH,
         JSON5.stringify(ShippingDetails, null, 2)
     );
+    res.status(200).send();
 });
 
-userRouter.post("/api/Payment", (req) => {
+userRouter.post("/api/Payment", (req, res) => {
     const { PaymentMethod } = req.body;
     const { loginCookie } = req.cookies;
     const username = loginCookie.username;
@@ -312,6 +312,7 @@ userRouter.post("/api/Payment", (req) => {
         USER_SHIPPING_DATA_FILE_PATH,
         JSON5.stringify(ShippingDetails, null, 2)
     );
+    res.status(200).send();
 });
 
 userRouter.get("/api/getShippingDetails", (req, res) => {
