@@ -1,16 +1,20 @@
 import express from "express";
-// import expressAsyncHandler from 'express-async-handler';
 import bcrypt from "bcryptjs";
 import cookieParser from "cookie-parser";
-import fs from "fs";
-import JSON5 from "json5";
-import { insertToUsersActivities } from "../persist.js";
-// TODO: remove from here
-const USER_DATA_FILE_PATH = "backend/data/users.json5";
-const USER_DATA_ACTIVITY = "backend/data/usersActivities.json5";
-const CART_DATA_FILE_PATH = "backend/data/cart.json5";
-const USER_SHIPPING_DATA_FILE_PATH = "backend/data/shippingData.json5";
-const USER_PURCHASES_FILE_PATH = "backend/data/purchases.json5";
+import {
+    insertToUsersActivities,
+    getAllUsers,
+    getAllUsersCart,
+    insertToUsers,
+    insertProductToUserCart,
+    deleteProductFromUserCart,
+    insertShippingDetails,
+    insertPaymentMethod,
+    getActivity,
+    getUserShipping,
+    insertPurchaseToUser,
+    deleteUserCart,
+} from "../persist.js";
 let orderNumber = 1;
 
 const userRouter = express.Router();
@@ -25,24 +29,12 @@ class ValidationResult {
 }
 
 function findUser(username) {
-    const allUsers = JSON5.parse(fs.readFileSync(USER_DATA_FILE_PATH));
+    const allUsers = getAllUsers();
     for (const user of allUsers) {
         if (user.username != username) continue;
         return user;
     }
     return null;
-}
-
-function createNewUser(username, password, fullName, email) {
-    const salt = bcrypt.genSaltSync();
-    return {
-        username: username,
-        fullName: fullName,
-        email: email,
-        password: bcrypt.hashSync(password, salt),
-        encryptionSalt: salt,
-        isAdmin: false,
-    };
 }
 
 function validateEncryptedPassword(user, encryptedPassword) {
@@ -65,29 +57,8 @@ function validateUnecryptedPassword(username, unencryptedPassword) {
     return validateEncryptedPassword(user, encryptedPassword);
 }
 
-// function isAuthenticated(req){
-//     const cookie = req.cookies.loginCookie;
-//     if (cookie === undefined)
-//         return false;
-//     const user = findUser(cookie['username']);
-//     if (!user){
-//         return new ValidationResult('Unknown username', null);
-//     }
-//     return validateEncryptedPassword(user, cookie['password']);
-// }
-
-//TODO: remove later
-function createActivityLog(activityType, DateAndTime, username, activityState) {
-    return {
-        username: username,
-        DateAndTime: DateAndTime,
-        activityType: activityType,
-        activityState: activityState,
-    };
-}
 userRouter.post("/api/login", (req, res) => {
     const username = req.body.username;
-    // const usersActivities = JSON5.parse(fs.readFileSync(USER_DATA_ACTIVITY));
     const validationResult = validateUnecryptedPassword(
         username,
         req.body.password
@@ -97,9 +68,6 @@ userRouter.post("/api/login", (req, res) => {
             validationError: validationResult.validationError,
         });
         insertToUsersActivities("Login", username, "Faliure");
-        // TODO: remove
-        // usersActivities.push(createActivityLog('Login', new Date(), username, 'Failure'));
-        // fs.writeFileSync(USER_DATA_ACTIVITY, JSON5.stringify(usersActivities, null, 2));
         return;
     }
     const maxAgeMinutes = req.body.rememberMe ? 60 * 24 * 30 : 30;
@@ -110,9 +78,6 @@ userRouter.post("/api/login", (req, res) => {
     };
     res.cookie("loginCookie", cookieData, { maxAge: maxAge, httpOnly: true });
     insertToUsersActivities("Login", username, "Success");
-    // TODO: remove
-    // usersActivities.push(createActivityLog('Login', new Date(), username, 'Success'));
-    // fs.writeFileSync(USER_DATA_ACTIVITY, JSON5.stringify(usersActivities, null, 2));
     res.status(200).send();
 });
 
@@ -135,10 +100,10 @@ userRouter.get("/api/getUserDetails", (req, res) => {
         });
         return;
     }
-    const allUsersCart = JSON5.parse(fs.readFileSync(CART_DATA_FILE_PATH));
+    const allUsersCart = getAllUsersCart();
     res.status(200).send({
         username: loginCookie.username,
-        cartSize: (allUsersCart[loginCookie.username] || []).length,
+        cartSize: (Object.keys(allUsersCart[loginCookie.username]) || []).length,
     });
 });
 
@@ -158,33 +123,20 @@ userRouter.post("/api/register", (req, res) => {
         return;
     }
 
-    const newUser = createNewUser(username, password, fullName, email);
-
-    const allUsers = JSON5.parse(fs.readFileSync(USER_DATA_FILE_PATH));
-    allUsers.push(newUser);
-    fs.writeFileSync(USER_DATA_FILE_PATH, JSON5.stringify(allUsers, null, 2));
-
+    insertToUsers(username, password, fullName, email);
     const maxAgeMinutes = rememberMe ? 60 * 24 * 30 : 30;
     const maxAge = 1000 * 60 * maxAgeMinutes;
-    const cookieData = { username: newUser.username, password: newUser.password };
+    const cookieData = { username: username, password: password };
     res.cookie("loginCookie", cookieData, { maxAge: maxAge, httpOnly: true });
     res.status(200).send();
 });
 
 userRouter.get("/api/logout", (req, res) => {
     res.clearCookie("loginCookie");
-    const usersActivities = JSON5.parse(fs.readFileSync(USER_DATA_ACTIVITY));
-    usersActivities.push(
-        createActivityLog(
-            "Logout",
-            new Date(),
-            req.cookies.loginCookie.username,
-            "Success"
-        )
-    );
-    fs.writeFileSync(
-        USER_DATA_ACTIVITY,
-        JSON5.stringify(usersActivities, null, 2)
+    insertToUsersActivities(
+        "Logout",
+        req.cookies.loginCookie.username,
+        "Success"
     );
     res.status(200).send();
 });
@@ -208,7 +160,7 @@ userRouter.get("/api/getUserCart", (req, res) => {
         });
         return;
     }
-    const allUsersCart = JSON5.parse(fs.readFileSync(CART_DATA_FILE_PATH));
+    const allUsersCart = getAllUsersCart();
     res.status(200).send({
         userCartItems: allUsersCart[loginCookie.username] || [],
     });
@@ -234,25 +186,14 @@ userRouter.post("/api/addItemToCart", (req, res) => {
         });
         return;
     }
-    const allUsersCart = JSON5.parse(fs.readFileSync(CART_DATA_FILE_PATH));
-    const usersActivities = JSON5.parse(fs.readFileSync(USER_DATA_ACTIVITY));
 
-    usersActivities.push(
-        createActivityLog(
-            `Add To Cart: Prodect ID: ${productId}`,
-            new Date(),
-            loginCookie.username,
-            "Success"
-        )
+    insertToUsersActivities(
+        `Add To Cart: Prodect ID: ${productId}`,
+        loginCookie.username,
+        "Success"
     );
-    fs.writeFileSync(
-        USER_DATA_ACTIVITY,
-        JSON5.stringify(usersActivities, null, 2)
-    );
+    insertProductToUserCart(loginCookie.username, productId, qty);
 
-    allUsersCart[loginCookie.username] = allUsersCart[loginCookie.username] || {};
-    allUsersCart[loginCookie.username][productId] = qty;
-    fs.writeFileSync(CART_DATA_FILE_PATH, JSON5.stringify(allUsersCart, null, 2));
     res.status(200).send();
 });
 
@@ -276,10 +217,7 @@ userRouter.post("/api/removeItemFromCart", (req, res) => {
         });
         return;
     }
-    const allUsersCart = JSON5.parse(fs.readFileSync(CART_DATA_FILE_PATH));
-    allUsersCart[loginCookie.username] = allUsersCart[loginCookie.username] || {};
-    delete allUsersCart[loginCookie.username][productId];
-    fs.writeFileSync(CART_DATA_FILE_PATH, JSON5.stringify(allUsersCart, null, 2));
+    deleteProductFromUserCart(loginCookie.username, productId);
     res.status(200).send();
 });
 
@@ -287,32 +225,14 @@ userRouter.post("/api/shipping", (req, res) => {
     const { fullName, address, city, postalCode, country } = req.body;
     const { loginCookie } = req.cookies;
     const username = loginCookie.username;
-    const ShippingDetails = JSON5.parse(
-        fs.readFileSync(USER_SHIPPING_DATA_FILE_PATH)
-    );
-
-    ShippingDetails[username] = { fullName, address, city, postalCode, country };
-    fs.writeFileSync(
-        USER_SHIPPING_DATA_FILE_PATH,
-        JSON5.stringify(ShippingDetails, null, 2)
-    );
-    res.status(200).send();
+    insertShippingDetails(username, fullName, address, city, postalCode, country);
 });
 
 userRouter.post("/api/Payment", (req, res) => {
     const { PaymentMethod } = req.body;
     const { loginCookie } = req.cookies;
     const username = loginCookie.username;
-    const ShippingDetails = JSON5.parse(
-        fs.readFileSync(USER_SHIPPING_DATA_FILE_PATH)
-    );
-    ShippingDetails[username]["PaymentMethod"] = PaymentMethod;
-
-    fs.writeFileSync(
-        USER_SHIPPING_DATA_FILE_PATH,
-        JSON5.stringify(ShippingDetails, null, 2)
-    );
-    res.status(200).send();
+    insertPaymentMethod(username, PaymentMethod);
 });
 
 userRouter.get("/api/getShippingDetails", (req, res) => {
@@ -335,9 +255,7 @@ userRouter.get("/api/getShippingDetails", (req, res) => {
         });
         return;
     }
-    const allUsersShippingData = JSON5.parse(
-        fs.readFileSync(USER_SHIPPING_DATA_FILE_PATH)
-    );
+    const allUsersShippingData = getUserShipping();
     let shipping = allUsersShippingData[userName];
     res.status(200).send({
         username: userName,
@@ -369,28 +287,17 @@ userRouter.post("/api/removeCart", (req, res) => {
         });
         return;
     }
-    const allUsersPurchases = JSON5.parse(
-        fs.readFileSync(USER_PURCHASES_FILE_PATH)
-    );
     orderNumber++;
-    const allUsersCart = JSON5.parse(fs.readFileSync(CART_DATA_FILE_PATH));
-    allUsersCart[loginCookie.username] = allUsersCart[loginCookie.username] || {};
-    allUsersPurchases[loginCookie.username] =
-        allUsersPurchases[loginCookie.username] || {};
-    allUsersPurchases[loginCookie.username][orderNumber] =
-        allUsersCart[loginCookie.username];
-    delete allUsersCart[loginCookie.username];
-    fs.writeFileSync(CART_DATA_FILE_PATH, JSON5.stringify(allUsersCart, null, 2));
-    fs.writeFileSync(
-        USER_PURCHASES_FILE_PATH,
-        JSON5.stringify(allUsersPurchases, null, 2)
-    );
+    const allUsersCart = getAllUsersCart();
+    const purchase = allUsersCart[loginCookie.username] || {};
+    insertPurchaseToUser(loginCookie.username, orderNumber, purchase);
+    deleteUserCart(loginCookie.username);
     res.status(200).send();
 });
 
 userRouter.get("/api/userActivity", (req, res) => {
     // TODO: make sure the user is an admin
-    res.send(JSON5.parse(fs.readFileSync(USER_DATA_ACTIVITY)));
+    res.send(getActivity());
 });
 
 export default userRouter;

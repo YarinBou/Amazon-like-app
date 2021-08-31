@@ -18,7 +18,7 @@ export default class AddProductScreen extends React.Component {
   async submitHandler(e) {
     e.preventDefault();
     try {
-      await Axios.post("/api/add-product", {
+      const { data } = await Axios.post("/api/admin/add", {
         name: this.state.name,
         category: this.state.category,
         image: this.state.image,
@@ -27,7 +27,8 @@ export default class AddProductScreen extends React.Component {
         countInStock: this.state.countInStock,
         description: this.state.description,
         });
-      document.location = "/";
+      this.setState({errorMessage: data.status});
+      // document.location = "/";
     } catch (e) {
       console.log(e.response.data.validationError);
       this.setState({errorMessage: e.response.data.validationError});

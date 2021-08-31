@@ -55,6 +55,10 @@ export default function CartScreen(props) {
           qty: qty,
         });
       } catch (e) {
+        if (e.response.data.validationError === 'Incorrect password') {
+          props.history.push("/login");
+          return;
+        }
         console.log(e.response.data.validationError);
         setCartItems(null);
       }
@@ -67,6 +71,10 @@ export default function CartScreen(props) {
       try {
         await Axios.post("/api/removeItemFromCart", { productId: productId });
       } catch (e) {
+        if (e.response.data.validationError === 'Incorrect password') {
+          props.history.push("/login");
+          return;
+        }
         console.log(e.response.data.validationError);
         setCartItems(null);
       }
