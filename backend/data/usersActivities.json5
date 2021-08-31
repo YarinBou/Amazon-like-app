@@ -1237,4 +1237,16 @@
     activityType: 'Login',
     activityState: 'Success',
   },
+  {
+    username: 'tester',
+    DateAndTime: '2021-08-31T18:36:20.721Z',
+    activityType: 'Logout',
+    activityState: 'Success',
+  },
+  {
+    username: 'tester',
+    DateAndTime: '2021-08-31T18:38:19.152Z',
+    activityType: 'Login',
+    activityState: 'Success',
+  },
 ]
