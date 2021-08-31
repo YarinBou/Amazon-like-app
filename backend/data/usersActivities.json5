@@ -1213,4 +1213,22 @@
     activityType: 'Login',
     activityState: 'Success',
   },
+  {
+    username: 'tester',
+    DateAndTime: '2021-08-31T13:36:31.829Z',
+    activityType: 'Logout',
+    activityState: 'Success',
+  },
+  {
+    username: 'tester',
+    DateAndTime: '2021-08-31T13:36:34.432Z',
+    activityType: 'Login',
+    activityState: 'Success',
+  },
+  {
+    username: 'tester',
+    DateAndTime: '2021-08-31T13:36:47.603Z',
+    activityType: 'Logout',
+    activityState: 'Success',
+  },
 ]

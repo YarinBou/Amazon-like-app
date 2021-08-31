@@ -8,14 +8,6 @@
     isAdmin: true,
   },
   {
-    username: "Gross",
-    fullName: "Yardena  Berkovic",
-    email: "gros@post.idc.ac.il",
-    password: "$2a$10$/hQfNZ4RRk8SsDJFcKrHF.UW.TGuzdlY1f7cw8/lv.rB6KQR7lcRa",
-    encryptionSalt: "$2a$10$/hQfNZ4RRk8SsDJFcKrHF.",
-    isAdmin: false,
-  },
-  {
     username: "tester",
     fullName: "tester",
     email: "test@idc.com",

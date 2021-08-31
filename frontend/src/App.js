@@ -18,19 +18,15 @@ import Readme from "./screens/Readme.js";
 
 function App() {
   const [username, setUserName] = useState(undefined);
-  const [cartSize, setCartSize] = useState(undefined);
 
   useEffect(async () => {
     try {
       const result = await Axios.get("/api/getUserDetails");
-      // const { username, cartSize } = result.data;
       const { username } = result.data;
       setUserName(username);
-      // setCartSize(cartSize);
     } catch (e) {
       console.log(e.response.data.validationError);
       setUserName(null);
-      // setCartSize(0);
     }
   }, []);
 
@@ -49,7 +45,6 @@ function App() {
             </Link>
             <Link to="/cart">
               <i className="fa fa-shopping-cart" aria-hidden="true"></i>
-              {/* {!!cartSize && <span className="badge">{cartSize}</span>} */}
             </Link>
             <Link to={username ? "/logout" : "/login"}>
               {username === undefined ? (
@@ -64,7 +59,7 @@ function App() {
                 </i>
               )}
             </Link>
-            {/* {username === null && <Link to="/register">Register</Link>} */}
+            {username === null && <Link to="/register">Register</Link>}
           </div>
         </header>
         <main>
