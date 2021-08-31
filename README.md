@@ -46,8 +46,10 @@ $ npm start
 
 ### 4. Admin Login
 
+```
 - Run http://localhost:3000/login
 - Enter admin username: "tester" and password:"123456789":
+```
 
 ### 5. Run Tests
 
