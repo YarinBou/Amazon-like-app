@@ -18,12 +18,15 @@ import Readme from "./screens/Readme.js";
 
 function App() {
   const [username, setUserName] = useState(undefined);
+  const [cartCount, setCartCount] = useState(0);
 
   useEffect(async () => {
     try {
       const result = await Axios.get("/api/getUserDetails");
       const { username } = result.data;
+      const { cartSize } = result.data;
       setUserName(username);
+      setCartCount(cartSize);
     } catch (e) {
       console.log(e.response.data.validationError);
       setUserName(null);
@@ -44,7 +47,7 @@ function App() {
               <i className="fa fa-heart" aria-hidden="true"></i>
             </Link>
             <Link to="/cart">
-              <i className="fa fa-shopping-cart" aria-hidden="true"></i>
+            <i className="fa fa-shopping-cart" aria-hidden="true"></i><span className="badge">{cartCount}</span>
             </Link>
             <Link to={username ? "/logout" : "/login"}>
               {username === undefined ? (
