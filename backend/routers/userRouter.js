@@ -102,10 +102,18 @@ userRouter.get("/api/getUserDetails", (req, res) => {
         return;
     }
     const allUsersCart = getAllUsersCart();
-    res.status(200).send({
-        username: loginCookie.username,
-        // cartSize: (Object.keys(allUsersCart[loginCookie.username]) || []).length,
-    });
+    if (allUsersCart[loginCookie.username]){
+        res.status(200).send({
+            username: loginCookie.username,
+            cartSize: (Object.keys(allUsersCart[loginCookie.username]) || []).length,
+        });
+    } else {
+        res.status(200).send({
+            username: loginCookie.username,
+            cartSize: 0,
+        });
+    }
+    
 });
 
 userRouter.post("/api/register", (req, res) => {
