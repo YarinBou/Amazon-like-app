@@ -1,13 +1,13 @@
 [
   {
-    _id: '1',
-    name: 'computer1',
-    category: 'computer',
-    image: '/images/p3.jpg',
-    price: 120,
-    brand: 'computer',
-    countInStock: 10,
-    description: 'high quality product',
+    _id: "1",
+    name: "stickers-1",
+    category: "stickers",
+    image: "/images/1.png",
+    price: 10,
+    brand: "Y&G",
+    countInStock: 100,
+    description: "high quality product",
     reviews: [
       {
         rating: 5,
@@ -20,19 +20,19 @@
       },
       {
         rating: 4,
-        text: 'Did not like the product',
+        text: "Did not like the product",
       },
     ],
   },
   {
-    _id: '2',
-    name: 'Camera1',
-    category: 'Camera',
-    image: '/images/p5.jpg',
-    price: 100,
-    brand: 'Camera',
-    countInStock: 15,
-    description: 'high quality product',
+    _id: "2",
+    name: "stickers-2",
+    category: "stickers",
+    image: "/images/2.png",
+    price: 10,
+    brand: "Y&G",
+    countInStock: 100,
+    description: "high quality product",
     reviews: [
       {
         rating: 5,
@@ -45,23 +45,23 @@
       },
       {
         rating: 4,
-        text: 'Did not like the product',
+        text: "Did not like the product",
       },
     ],
   },
   {
-    _id: '3',
-    name: 'headphones1',
-    category: 'headphones',
-    image: '/images/p6.jpg',
-    price: 220,
-    brand: 'headphones',
-    countInStock: 0,
-    description: 'high quality product',
+    _id: "3",
+    name: "stickers-3",
+    category: "stickers",
+    image: "/images/3.png",
+    price: 10,
+    brand: "Y&G",
+    countInStock: 100,
+    description: "high quality product",
     reviews: [
       {
         rating: 5,
-        text: 'Loved it!',
+        text: "Loved it!",
       },
       {
         rating: 4,
@@ -71,19 +71,19 @@
       },
       {
         rating: 4,
-        text: 'Did not like the product',
+        text: "Did not like the product",
       },
     ],
   },
   {
-    _id: '4',
-    name: 'headphones2',
-    category: 'headphones',
-    image: '/images/p6.jpg',
-    price: 78,
-    brand: 'headphones',
-    countInStock: 10,
-    description: 'high quality product',
+    _id: "4",
+    name: "stickers-4",
+    category: "stickers",
+    image: "/images/04.png",
+    price: 10,
+    brand: "Y&G",
+    countInStock: 100,
+    description: "high quality product",
     reviews: [
       {
         rating: 5,
@@ -96,23 +96,23 @@
       },
       {
         rating: 4,
-        text: 'Did not like the product',
+        text: "Did not like the product",
       },
       {
         rating: 5,
-        text: 'like it',
+        text: "like it",
       },
     ],
   },
   {
-    _id: '5',
-    name: 'Camera2',
-    category: 'Camera',
-    image: '/images/p5.jpg',
-    price: 65,
-    brand: 'Camera',
-    countInStock: 10,
-    description: 'high quality product',
+    _id: "5",
+    name: "stickers-5",
+    category: "stickers",
+    image: "/images/5.png",
+    price: 10,
+    brand: "Y&G",
+    countInStock: 100,
+    description: "high quality product",
     reviews: [
       {
         rating: 5,
@@ -125,19 +125,19 @@
       },
       {
         rating: 4,
-        text: 'Did not like the product',
+        text: "Did not like the product",
       },
     ],
   },
   {
-    _id: '6',
-    name: 'computer2',
-    category: 'computer',
-    image: '/images/p3.jpg',
-    price: 139,
-    brand: 'computer',
-    countInStock: 2,
-    description: 'high quality product',
+    _id: "6",
+    name: "stickers-6",
+    category: "stickers",
+    image: "/images/6.jpg",
+    price: 10,
+    brand: "Y&G",
+    countInStock: 100,
+    description: "high quality product",
     reviews: [
       {
         rating: 5,
@@ -150,19 +150,19 @@
       },
       {
         rating: 4,
-        text: 'Did not like the product',
+        text: "Did not like the product",
       },
     ],
   },
   {
-    _id: '7',
-    name: 'computer3',
-    category: 'computer',
-    image: '/images/p3.jpg',
-    price: 120,
-    brand: 'computer',
-    countInStock: 3,
-    description: 'high quality product',
+    _id: "7",
+    name: "stickers-7",
+    category: "stickers",
+    image: "/images/7.jpg",
+    price: 10,
+    brand: "Y&G",
+    countInStock: 100,
+    description: "high quality product",
     reviews: [
       {
         rating: 5,
@@ -175,19 +175,19 @@
       },
       {
         rating: 4,
-        text: 'Did not like the product',
+        text: "Did not like the product",
       },
     ],
   },
   {
-    _id: '8',
-    name: 'Camera3',
-    category: 'Camera',
-    image: '/images/p5.jpg',
-    price: 100,
-    brand: 'Camera',
-    countInStock: 8,
-    description: 'high quality product',
+    _id: "8",
+    name: "stickers-8",
+    category: "stickers",
+    image: "/images/8.jpg",
+    price: 10,
+    brand: "Y&G",
+    countInStock: 100,
+    description: "high quality product",
     reviews: [
       {
         rating: 5,
@@ -200,19 +200,19 @@
       },
       {
         rating: 4,
-        text: 'Did not like the product',
+        text: "Did not like the product",
       },
     ],
   },
   {
-    _id: '9',
-    name: 'headphones3',
-    category: 'headphones',
-    image: '/images/p6.jpg',
-    price: 220,
-    brand: 'headphones',
-    countInStock: 2,
-    description: 'high quality product',
+    _id: "9",
+    name: "stickers-9",
+    category: "stickers",
+    image: "/images/9.jpg",
+    price: 10,
+    brand: "Y&G",
+    countInStock: 100,
+    description: "high quality product",
     reviews: [
       {
         rating: 5,
@@ -225,19 +225,19 @@
       },
       {
         rating: 4,
-        text: 'Did not like the product',
+        text: "Did not like the product",
       },
     ],
   },
   {
-    _id: '10',
-    name: 'headphones4',
-    category: 'headphones',
-    image: '/images/p6.jpg',
-    price: 78,
-    brand: 'headphones',
-    countInStock: 10,
-    description: 'high quality product',
+    _id: "10",
+    name: "stickers-10",
+    category: "stickers",
+    image: "/images/10.jpg",
+    price: 10,
+    brand: "Y&G",
+    countInStock: 100,
+    description: "high quality product",
     reviews: [
       {
         rating: 5,
@@ -250,19 +250,19 @@
       },
       {
         rating: 4,
-        text: 'Did not like the product',
+        text: "Did not like the product",
       },
     ],
   },
   {
-    _id: '11',
-    name: 'Camera4',
-    category: 'Camera',
-    image: '/images/p5.jpg',
-    price: 65,
-    brand: 'Camera',
-    countInStock: 10,
-    description: 'high quality product',
+    _id: "11",
+    name: "stickers-11",
+    category: "stickers",
+    image: "/images/11.jpg",
+    price: 10,
+    brand: "Y&G",
+    countInStock: 100,
+    description: "high quality product",
     reviews: [
       {
         rating: 5,
@@ -275,19 +275,19 @@
       },
       {
         rating: 4,
-        text: 'Did not like the product',
+        text: "Did not like the product",
       },
     ],
   },
   {
-    _id: '12',
-    name: 'computer4',
-    category: 'computer',
-    image: '/images/p3.jpg',
-    price: 139,
-    brand: 'computer',
-    countInStock: 10,
-    description: 'high quality product',
+    _id: "12",
+    name: "stickers-12",
+    category: "stickers",
+    image: "/images/12.jpg",
+    price: 10,
+    brand: "Y&G",
+    countInStock: 100,
+    description: "high quality product",
     reviews: [
       {
         rating: 5,
@@ -300,7 +300,722 @@
       },
       {
         rating: 4,
-        text: 'Did not like the product',
+        text: "Did not like the product",
+      },
+    ],
+  },
+  {
+    _id: "13",
+    name: "stickers-13",
+    category: "stickers",
+    image: "/images/13.jpg",
+    price: 10,
+    brand: "Y&G",
+    countInStock: 100,
+    description: "high quality product",
+    reviews: [
+      {
+        rating: 5,
+        text: "Loved it!",
+      },
+      {
+        rating: 4,
+      },
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+        text: "Did not like the product",
+      },
+    ],
+  },
+  {
+    _id: "14",
+    name: "stickers-14",
+    category: "stickers",
+    image: "/images/14.jpg",
+    price: 10,
+    brand: "Y&G",
+    countInStock: 100,
+    description: "high quality product",
+    reviews: [
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+      },
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+        text: "Did not like the product",
+      },
+      {
+        rating: 5,
+        text: "like it",
+      },
+    ],
+  },
+  {
+    _id: "15",
+    name: "stickers-15",
+    category: "stickers",
+    image: "/images/15.jpg",
+    price: 10,
+    brand: "Y&G",
+    countInStock: 100,
+    description: "high quality product",
+    reviews: [
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+      },
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+        text: "Did not like the product",
+      },
+    ],
+  },
+  {
+    _id: "16",
+    name: "stickers-16",
+    category: "stickers",
+    image: "/images/16.jpg",
+    price: 10,
+    brand: "Y&G",
+    countInStock: 100,
+    description: "high quality product",
+    reviews: [
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+      },
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+        text: "Did not like the product",
+      },
+    ],
+  },
+  {
+    _id: "17",
+    name: "stickers-17",
+    category: "stickers",
+    image: "/images/17.jpg",
+    price: 10,
+    brand: "Y&G",
+    countInStock: 100,
+    description: "high quality product",
+    reviews: [
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+      },
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+        text: "Did not like the product",
+      },
+    ],
+  },
+  {
+    _id: "18",
+    name: "stickers-18",
+    category: "stickers",
+    image: "/images/18.jpg",
+    price: 10,
+    brand: "Y&G",
+    countInStock: 100,
+    description: "high quality product",
+    reviews: [
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+      },
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+        text: "Did not like the product",
+      },
+    ],
+  },
+  {
+    _id: "19",
+    name: "stickers-19",
+    category: "stickers",
+    image: "/images/19.jpg",
+    price: 10,
+    brand: "Y&G",
+    countInStock: 100,
+    description: "high quality product",
+    reviews: [
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+      },
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+        text: "Did not like the product",
+      },
+    ],
+  },
+  {
+    _id: "20",
+    name: "stickers-20",
+    category: "stickers",
+    image: "/images/20.jpg",
+    price: 10,
+    brand: "Y&G",
+    countInStock: 100,
+    description: "high quality product",
+    reviews: [
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+      },
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+        text: "Did not like the product",
+      },
+    ],
+  },
+  {
+    _id: "21",
+    name: "stickers-21",
+    category: "stickers",
+    image: "/images/21.jpg",
+    price: 10,
+    brand: "Y&G",
+    countInStock: 100,
+    description: "high quality product",
+    reviews: [
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+      },
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+        text: "Did not like the product",
+      },
+    ],
+  },
+  {
+    _id: "22",
+    name: "stickers-22",
+    category: "stickers",
+    image: "/images/22.jpg",
+    price: 10,
+    brand: "Y&G",
+    countInStock: 100,
+    description: "high quality product",
+    reviews: [
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+      },
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+        text: "Did not like the product",
+      },
+    ],
+  },
+  {
+    _id: "23",
+    name: "stickers-3",
+    category: "stickers",
+    image: "/images/23.jpg",
+    price: 10,
+    brand: "Y&G",
+    countInStock: 100,
+    description: "high quality product",
+    reviews: [
+      {
+        rating: 5,
+        text: "Loved it!",
+      },
+      {
+        rating: 4,
+      },
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+        text: "Did not like the product",
+      },
+    ],
+  },
+  {
+    _id: "24",
+    name: "stickers-24",
+    category: "stickers",
+    image: "/images/24.jpg",
+    price: 10,
+    brand: "Y&G",
+    countInStock: 100,
+    description: "high quality product",
+    reviews: [
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+      },
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+        text: "Did not like the product",
+      },
+      {
+        rating: 5,
+        text: "like it",
+      },
+    ],
+  },
+  {
+    _id: "25",
+    name: "stickers-5",
+    category: "stickers",
+    image: "/images/25.jpg",
+    price: 10,
+    brand: "Y&G",
+    countInStock: 100,
+    description: "high quality product",
+    reviews: [
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+      },
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+        text: "Did not like the product",
+      },
+    ],
+  },
+  {
+    _id: "26",
+    name: "stickers-26",
+    category: "stickers",
+    image: "/images/26.jpg",
+    price: 10,
+    brand: "Y&G",
+    countInStock: 100,
+    description: "high quality product",
+    reviews: [
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+      },
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+        text: "Did not like the product",
+      },
+    ],
+  },
+  {
+    _id: "27",
+    name: "stickers-27",
+    category: "stickers",
+    image: "/images/27.jpg",
+    price: 10,
+    brand: "Y&G",
+    countInStock: 100,
+    description: "high quality product",
+    reviews: [
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+      },
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+        text: "Did not like the product",
+      },
+    ],
+  },
+  {
+    _id: "28",
+    name: "stickers-28",
+    category: "stickers",
+    image: "/images/28.jpg",
+    price: 10,
+    brand: "Y&G",
+    countInStock: 100,
+    description: "high quality product",
+    reviews: [
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+      },
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+        text: "Did not like the product",
+      },
+    ],
+  },
+  {
+    _id: "29",
+    name: "stickers-29",
+    category: "stickers",
+    image: "/images/29.jpg",
+    price: 10,
+    brand: "Y&G",
+    countInStock: 100,
+    description: "high quality product",
+    reviews: [
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+      },
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+        text: "Did not like the product",
+      },
+    ],
+  },
+  {
+    _id: "30",
+    name: "stickers-30",
+    category: "stickers",
+    image: "/images/30.jpg",
+    price: 10,
+    brand: "Y&G",
+    countInStock: 100,
+    description: "high quality product",
+    reviews: [
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+      },
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+        text: "Did not like the product",
+      },
+    ],
+  },
+  {
+    _id: "31",
+    name: "stickers-31",
+    category: "stickers",
+    image: "/images/31.jpg",
+    price: 10,
+    brand: "Y&G",
+    countInStock: 100,
+    description: "high quality product",
+    reviews: [
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+      },
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+        text: "Did not like the product",
+      },
+    ],
+  },
+  {
+    _id: "32",
+    name: "stickers-32",
+    category: "stickers",
+    image: "/images/32.jpg",
+    price: 10,
+    brand: "Y&G",
+    countInStock: 100,
+    description: "high quality product",
+    reviews: [
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+      },
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+        text: "Did not like the product",
+      },
+    ],
+  },
+  {
+    _id: "33",
+    name: "stickers-33",
+    category: "stickers",
+    image: "/images/33.jpg",
+    price: 10,
+    brand: "Y&G",
+    countInStock: 100,
+    description: "high quality product",
+    reviews: [
+      {
+        rating: 5,
+        text: "Loved it!",
+      },
+      {
+        rating: 4,
+      },
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+        text: "Did not like the product",
+      },
+    ],
+  },
+  {
+    _id: "34",
+    name: "stickers-34",
+    category: "stickers",
+    image: "/images/34.jpg",
+    price: 10,
+    brand: "Y&G",
+    countInStock: 100,
+    description: "high quality product",
+    reviews: [
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+      },
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+        text: "Did not like the product",
+      },
+      {
+        rating: 5,
+        text: "like it",
+      },
+    ],
+  },
+  {
+    _id: "35",
+    name: "stickers-35",
+    category: "stickers",
+    image: "/images/35.jpg",
+    price: 10,
+    brand: "Y&G",
+    countInStock: 100,
+    description: "high quality product",
+    reviews: [
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+      },
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+        text: "Did not like the product",
+      },
+    ],
+  },
+  {
+    _id: "36",
+    name: "stickers-36",
+    category: "stickers",
+    image: "/images/36.jpg",
+    price: 10,
+    brand: "Y&G",
+    countInStock: 100,
+    description: "high quality product",
+    reviews: [
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+      },
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+        text: "Did not like the product",
+      },
+    ],
+  },
+  {
+    _id: "37",
+    name: "stickers-37",
+    category: "stickers",
+    image: "/images/37.jpg",
+    price: 10,
+    brand: "Y&G",
+    countInStock: 100,
+    description: "high quality product",
+    reviews: [
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+      },
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+        text: "Did not like the product",
+      },
+    ],
+  },
+  {
+    _id: "38",
+    name: "stickers-38",
+    category: "stickers",
+    image: "/images/38.jpg",
+    price: 10,
+    brand: "Y&G",
+    countInStock: 100,
+    description: "high quality product",
+    reviews: [
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+      },
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+        text: "Did not like the product",
+      },
+    ],
+  },
+  {
+    _id: "39",
+    name: "stickers-39",
+    category: "stickers",
+    image: "/images/39.jpg",
+    price: 10,
+    brand: "Y&G",
+    countInStock: 100,
+    description: "high quality product",
+    reviews: [
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+      },
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+        text: "Did not like the product",
+      },
+    ],
+  },
+  {
+    _id: "40",
+    name: "stickers-40",
+    category: "stickers",
+    image: "/images/40.jpg",
+    price: 10,
+    brand: "Y&G",
+    countInStock: 100,
+    description: "high quality product",
+    reviews: [
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+      },
+      {
+        rating: 5,
+      },
+      {
+        rating: 4,
+        text: "Did not like the product",
       },
     ],
   },

@@ -3,6 +3,7 @@
 A WEB application that co-responds to fully-functional e-commerce website.</br>
 
 ![Sticker'sForGeeks ](/template/images/StickForGeeks.jpg)
+![Sticker'sForGeeks ](/template/images/5.jpg)
 
 # Built With
 
@@ -45,5 +46,12 @@ $ npm start
 
 ### 4. Admin Login
 
-- Run http://localhost:3000/signin
-- Enter admin email and password and click signin
+- Run http://localhost:3000/login
+- Enter admin username: "tester" and password:"123456789":
+
+### 5. Run Tests
+
+```
+# open new terminal
+$ node .\Tests.js
+```
