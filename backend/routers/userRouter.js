@@ -232,18 +232,21 @@ userRouter.post("/api/removeItemFromCart", (req, res) => {
     res.status(200).send();
 });
 
-userRouter.post("/api/shipping", (req) => {
+userRouter.post("/api/shipping", (req, res) => {
     const { fullName, address, city, postalCode, country } = req.body;
     const { loginCookie } = req.cookies;
     const username = loginCookie.username;
     insertShippingDetails(username, fullName, address, city, postalCode, country);
+    res.status(200).send();
 });
 
-userRouter.post("/api/Payment", (req) => {
+userRouter.post("/api/Payment", (req, res) => {
     const { PaymentMethod } = req.body;
     const { loginCookie } = req.cookies;
     const username = loginCookie.username;
     insertPaymentMethod(username, PaymentMethod);
+    res.status(200).send();
+
 });
 
 userRouter.get("/api/getShippingDetails", (req, res) => {
