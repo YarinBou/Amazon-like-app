@@ -1375,4 +1375,58 @@
     activityType: 'Add To Cart: Prodect ID: 10',
     activityState: 'Success',
   },
+  {
+    username: 'tester',
+    DateAndTime: '2021-08-31T22:36:15.082Z',
+    activityType: 'Login',
+    activityState: 'Success',
+  },
+  {
+    username: 'tester',
+    DateAndTime: '2021-08-31T22:36:26.783Z',
+    activityType: 'Add To Cart: Prodect ID: 3',
+    activityState: 'Success',
+  },
+  {
+    username: 'Gross',
+    DateAndTime: '2021-09-01T05:39:04.832Z',
+    activityType: 'Login',
+    activityState: 'Success',
+  },
+  {
+    username: 'Gross',
+    DateAndTime: '2021-09-01T05:39:04.870Z',
+    activityType: 'Add To Cart: Prodect ID: 1',
+    activityState: 'Success',
+  },
+  {
+    username: 'Gross',
+    DateAndTime: '2021-09-01T05:40:42.290Z',
+    activityType: 'Login',
+    activityState: 'Success',
+  },
+  {
+    username: 'Gross',
+    DateAndTime: '2021-09-01T05:40:42.328Z',
+    activityType: 'Add To Cart: Prodect ID: 1',
+    activityState: 'Success',
+  },
+  {
+    username: 'Gross',
+    DateAndTime: '2021-09-01T05:43:18.866Z',
+    activityType: 'Login',
+    activityState: 'Success',
+  },
+  {
+    username: 'Gross',
+    DateAndTime: '2021-09-01T05:43:18.904Z',
+    activityType: 'Add To Cart: Prodect ID: 1',
+    activityState: 'Success',
+  },
+  {
+    username: 'tester',
+    DateAndTime: '2021-09-01T05:44:52.287Z',
+    activityType: 'Login',
+    activityState: 'Success',
+  },
 ]

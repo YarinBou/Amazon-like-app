@@ -104,7 +104,7 @@ userRouter.get("/api/getUserDetails", (req, res) => {
         return;
     }
     const allUsersCart = getAllUsersCart();
-    if (allUsersCart[loginCookie.username]){
+    if (allUsersCart[loginCookie.username]) {
         res.status(200).send({
             username: loginCookie.username,
             cartSize: (Object.keys(allUsersCart[loginCookie.username]) || []).length,
@@ -115,7 +115,6 @@ userRouter.get("/api/getUserDetails", (req, res) => {
             cartSize: 0,
         });
     }
-    
 });
 
 userRouter.post("/api/register", (req, res) => {
@@ -232,21 +231,18 @@ userRouter.post("/api/removeItemFromCart", (req, res) => {
     res.status(200).send();
 });
 
-userRouter.post("/api/shipping", (req, res) => {
+userRouter.post("/api/shipping", (req) => {
     const { fullName, address, city, postalCode, country } = req.body;
     const { loginCookie } = req.cookies;
     const username = loginCookie.username;
     insertShippingDetails(username, fullName, address, city, postalCode, country);
-    res.status(200).send();
 });
 
-userRouter.post("/api/Payment", (req, res) => {
+userRouter.post("/api/Payment", (req) => {
     const { PaymentMethod } = req.body;
     const { loginCookie } = req.cookies;
     const username = loginCookie.username;
     insertPaymentMethod(username, PaymentMethod);
-    res.status(200).send();
-
 });
 
 userRouter.get("/api/getShippingDetails", (req, res) => {
@@ -311,7 +307,7 @@ userRouter.post("/api/removeCart", (req, res) => {
 
 userRouter.get("/api/userActivity", (req, res) => {
     const isUserAdmin = isAdmin(req);
-    if(!isUserAdmin){
+    if (!isUserAdmin) {
         res.status(401).send({
             validationError: "You are not an admin!.",
         });

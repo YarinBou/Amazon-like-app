@@ -13,7 +13,6 @@
     city: 'Tel-Aviv',
     postalCode: '7752368',
     country: 'israel',
-    PaymentMethod: 'Paypal',
   },
   MICHAEL: {
     fullName: 'Yarin Bouzaglo',

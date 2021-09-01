@@ -219,64 +219,37 @@ function setShippingAddress() {
         postalCode: "7752368",
         country: "israel",
     };
+    console.log("add new shipping address: ", data);
 
-    return (
-        fetch("http://localhost:5000/api/shipping/", {
-            method: "POST",
-            body: JSON.stringify(data),
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json",
-                Cache: "no-cache",
-                cookie: token,
-            },
-            credentials: "include",
-        })
-        .then((res) => {
-            console.log("add new shipping address: ", data);
-            if (res.status === 200) {
-                console.log("Success adding new shipping address:" + res.status);
-            } else {
-                console.log("FAILURE. status: " + res.status);
-            }
-        })
-        //Then with the error genereted...
-        .catch((error) => {
-            console.error("Error:", error);
-        })
-    );
+    return fetch("http://localhost:5000/api/shipping/", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Cache: "no-cache",
+            cookie: token,
+        },
+        credentials: "include",
+    });
 }
 
 function setPaymentMethod() {
     const data = {
         PaymentMethod: "Paypal",
     };
-
-    return (
-        fetch("http://localhost:5000/api/payment/", {
-            method: "POST",
-            body: JSON.stringify(data),
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json",
-                Cache: "no-cache",
-                cookie: token,
-            },
-            credentials: "include",
-        })
-        .then((res) => {
-            console.log("set payment method: ", data);
-            if (res.status === 200) {
-                console.log("Success setting payment method:" + res.status);
-            } else {
-                console.log("FAILURE. status: " + res.status);
-            }
-        })
-        //Then with the error genereted...
-        .catch((error) => {
-            console.error("Error:", error);
-        })
-    );
+    console.log("set payment method: ", data);
+    return fetch("http://localhost:5000/api/payment/", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Cache: "no-cache",
+            cookie: token,
+        },
+        credentials: "include",
+    });
 }
 
 function getShippingDetails() {
@@ -314,9 +287,6 @@ async function run() {
     await getUserCart();
     await removeItemFromCart();
     await getUserCart();
-    await setShippingAddress();
-    await setPaymentMethod();
-    await getShippingDetails();
     console.log("Done Tests!");
 }
 
