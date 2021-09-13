@@ -4,6 +4,8 @@ A WEB application that co-responds to fully-functional e-commerce website.</br>
 
 ![Sticker'sForGeeks ](/template/images/StickForGeeks.jpg)
 ![Sticker'sForGeeks ](/template/images/5.jpg)
+![Sticker'sForGeeks ](/template/videos/ECommerce_Website_Demo.mp4)
+
 
 # Built With
 
