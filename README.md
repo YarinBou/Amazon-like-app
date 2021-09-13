@@ -2,7 +2,9 @@
 
 A WEB application that co-responds to fully-functional e-commerce website.</br>
 
-[![Watch the video](/template/images/StickForGeeks.jpg)](https://www.youtube.com/watch?v=y1uMGr3QROQ)
+
+
+https://user-images.githubusercontent.com/62481484/133145066-2bc2fa7f-6daa-42d0-ac47-1c1dc5d2a5d2.mp4
 ![Sticker'sForGeeks ](/template/images/StickForGeeks.jpg)
 ![Sticker'sForGeeks ](/template/images/5.jpg)
 
