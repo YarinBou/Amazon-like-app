@@ -3,12 +3,7 @@
 A WEB application that co-responds to fully-functional e-commerce website.</br>
 
 
-
-https://user-images.githubusercontent.com/62481484/133145066-2bc2fa7f-6daa-42d0-ac47-1c1dc5d2a5d2.mp4
-![Sticker'sForGeeks ](/template/images/StickForGeeks.jpg)
-![Sticker'sForGeeks ](/template/images/5.jpg)
-
-
+https://user-images.githubusercontent.com/62481484/133145832-f5cb03c5-e913-4f9d-a916-00c20978befc.mp4
 
 # Built With
 
