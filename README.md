@@ -3,7 +3,10 @@
 A WEB application that co-responds to fully-functional e-commerce website.</br>
 
 
-https://user-images.githubusercontent.com/62481484/133145832-f5cb03c5-e913-4f9d-a916-00c20978befc.mp4
+
+
+https://user-images.githubusercontent.com/62481484/133147180-f8628d64-aa53-4f01-8013-c4f5bca1652d.mp4
+
 
 # Built With
 
