@@ -10,6 +10,7 @@ https://user-images.githubusercontent.com/62481484/133147180-f8628d64-aa53-4f01-
 
 # Built With
 
+- Javascript: with ES6 coding standards.
 - HTML5 and CSS3: Semantic Elements, CSS Grid, Flexbox
 - React: Components, Props, Events, Hooks, Router, Axios
 - Redux: Store, Reducers, Actions
