@@ -28,8 +28,8 @@ To get a local copy up and running follow these simple example steps.
 ### 1. Clone repo
 
 ```
-$ git clone https://github.com/YarinBou/Amazon-like-app.git
-$ cd Amazon-like-app
+$ git clone https://github.com/YarinBou/Sticker-sForGeeks.git
+$ cd Sticker-sForGeeks
 ```
 
 ### 2. Run Backend
